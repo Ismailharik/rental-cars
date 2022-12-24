@@ -1,0 +1,26 @@
+package com.example.carsservice.dto;
+
+
+import com.example.carsservice.entities.Category;
+import com.example.carsservice.entities.Promo;
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+@Data
+public class VehicleDTO {
+    private Long id;
+    private String titre;
+    private String description;
+    private float dailyPrice;
+    private Date dateFirstCirculation;
+    private float nbrOfKm;
+    private float franchise;
+    private boolean available;
+    private List<String> images =new ArrayList(); // Should be EAGER
+    //private ArrayList<Reservation> reservations;
+    private Promo promo ;
+    //private Category category;
+    private Long officeId;
+}

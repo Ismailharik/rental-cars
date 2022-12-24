@@ -1,0 +1,14 @@
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id : customer-service
+#          uri : http://localhost:8083/
+#          predicates :
+#            - Path = /customers-service/**
+#          filters:
+#            - RewritePath=/customers-service/(?<path>.*), /$\{path}
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true
