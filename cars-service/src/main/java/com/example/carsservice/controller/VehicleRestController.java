@@ -85,11 +85,17 @@ public class VehicleRestController {
         iVehicleService.addImageToVehicle(vehicleId,file);
     }
     @GetMapping(path = "/images/{vehicleId}")
-    public List<byte[]> getVehicleImage(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
+    public List<byte[]> getVehicleImages(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
 
         // get one img
    //   return Files.readAllBytes(
      //           Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/car2.jpg"));
         return iVehicleService.getVehicleImages(vehicleId);
+    }
+    @GetMapping(path = "/image/{vehicleId}",produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getVehicleImage(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
+
+
+        return iVehicleService.getVehicleImage(vehicleId);
     }
 }

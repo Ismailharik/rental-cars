@@ -130,4 +130,13 @@ public class VehicleServiceImpl implements IVehicleService {
 
     }
 
+    @Override
+    public byte[] getVehicleImage(Long vehicleId) throws VehicleNotFoundException, IOException {
+        Vehicle vehicle = vehiculeRepository.findById(vehicleId)
+                .orElseThrow(() -> new VehicleNotFoundException(vehicleId));
+
+        String img = vehicle.getImages().get(0);
+        return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/"+img));
+    }
+
 }
