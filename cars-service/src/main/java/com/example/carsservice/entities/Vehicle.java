@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,8 @@ public class Vehicle {
     private float nbrOfKm;
     private float franchise;
     private boolean available;
-    private List<String> images =new ArrayList(); // Should be EAGER
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> images =new ArrayList(); // Should allocate space here because I will add images
 
     @ManyToOne
     private Promo promo ;

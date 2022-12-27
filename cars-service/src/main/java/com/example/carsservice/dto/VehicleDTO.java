@@ -18,7 +18,7 @@ public class VehicleDTO {
     private float nbrOfKm;
     private float franchise;
     private boolean available;
-    private List<String> images =new ArrayList(); // Should be EAGER
+    private List<String> images ; // Should be EAGER
     //private ArrayList<Reservation> reservations;
     private Promo promo ;
     //private Category category;

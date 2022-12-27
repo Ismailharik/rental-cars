@@ -25,4 +25,5 @@ public interface IVehicleService {
     List<VehicleDTO> findVehiclesWithPaginationAndSorting(int offset,int pageSize,String field);
 
 
+    List<byte[]> getVehicleImages(Long vehicleId) throws VehicleNotFoundException;
 }

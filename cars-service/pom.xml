@@ -83,9 +83,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-core</artifactId>
         </dependency>
-
-
-
     </dependencies>
     <dependencyManagement>
         <dependencies>

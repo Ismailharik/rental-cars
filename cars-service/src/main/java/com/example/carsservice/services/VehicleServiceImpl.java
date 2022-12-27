@@ -17,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -87,6 +88,7 @@ public class VehicleServiceImpl implements IVehicleService {
         return vehiclesDto;
     }
 
+
     @Override
     public List<VehicleDTO> getVehicleWithSorting(String field) {
         List<Vehicle> vehicles = vehiculeRepository.findAll(Sort.by(Sort.Direction.ASC,field));
@@ -104,10 +106,28 @@ public class VehicleServiceImpl implements IVehicleService {
         Vehicle vehicle = vehiculeRepository.findById(id).orElseThrow(()->new CategoryNotFoundException(id));
 
         String imageName = file.getOriginalFilename();
-        vehicle.getImages().add(imageName);
-        Files.write(Paths.get(System.getProperty("user.home")+"/rental-app/vehicles"+imageName), file.getBytes());
+        System.out.println(imageName);
+        vehicle.getImages().add(imageName);// imageName + it's extension
+        vehiculeRepository.save(vehicle);
+        Files.write(Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/"+imageName), file.getBytes());
         //vehiculeRepository.save(vehicle);
     }
 
+    @Override
+    public List<byte[]>     getVehicleImages(Long vehicleId) throws VehicleNotFoundException {
+        Vehicle vehicle = vehiculeRepository.findById(
+                vehicleId).orElseThrow(() -> new VehicleNotFoundException(vehicleId));
+
+        return vehicle.getImages().stream().
+                map(img -> {
+                    try {
+                        return Files.readAllBytes(
+                                Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/"+img));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }).toList();
+
+    }
 
 }

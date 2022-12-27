@@ -14,6 +14,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 
 import java.text.ParseException;
@@ -24,7 +28,6 @@ import java.util.List;
 
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "Cars API",description = "Cars Api microservice"))
-
 public class CarsServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(CarsServiceApplication.class, args);
@@ -57,6 +60,5 @@ public class CarsServiceApplication {
             vehiculeRepository.saveAll(vehicles);
         };
     }
-
 
 }
