@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 public class VehicleDTO {
     private Long id;
-    private String titre;
+    private String title;
     private String description;
     private float dailyPrice;
     private Date dateFirstCirculation;

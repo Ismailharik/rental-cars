@@ -1,5 +1,6 @@
 package com.example.carsservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +18,7 @@ import java.util.List;
 public class Vehicle {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titre;
+    private String title;
     private String description;
     private float dailyPrice;
     private Date dateFirstCirculation;

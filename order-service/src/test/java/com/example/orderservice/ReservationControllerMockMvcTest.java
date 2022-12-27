@@ -8,6 +8,7 @@ import com.example.orderservice.services.IReservation;
 import com.example.orderservice.web.ReservationController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
+@AllArgsConstructor
 public class ReservationControllerMockMvcTest {
 
-    @Autowired
+
     private MockMvc mockMvc;
     @MockBean
     private IReservation iReservation; // reservation Services

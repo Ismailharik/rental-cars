@@ -1,8 +1,10 @@
 package com.example.carsservice.services;
 
 import com.example.carsservice.dto.VehicleDTO;
+import com.example.carsservice.entities.Vehicle;
 import com.example.carsservice.exceptions.CategoryNotFoundException;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -18,6 +20,9 @@ public interface IVehicleService {
     VehicleDTO addVehicle(VehicleDTO vehicleDTO,Long idCategory) throws CategoryNotFoundException;
     VehicleDTO updateVehicle(VehicleDTO vehicleDTO) throws VehicleNotFoundException;
     void deleteVehicle(Long idVehicle) throws VehicleNotFoundException;
+
+    List<VehicleDTO> findVehiclesWithPagination(int offset,int pageSize);
+    List<VehicleDTO> findVehiclesWithPaginationAndSorting(int offset,int pageSize,String field);
 
 
 }

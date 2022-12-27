@@ -1,6 +1,7 @@
 package com.example.carsservice.controller;
 
 
+import com.example.carsservice.entities.Vehicle;
 import com.example.carsservice.exceptions.CategoryNotFoundException;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
 import com.example.carsservice.services.IVehicleService;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,11 +48,9 @@ public class VehicleRestController {
         iVehicleService.deleteVehicle(vehicleId);
     }
 
-    @GetMapping("/prices/{min-max}")
-    public List<VehicleDTO> getVehiclesByPrice(@PathVariable("min-max")  float[] priceRange) throws VehicleNotFoundException {
-        float minPrice= priceRange[0];
-        float maxPrice =priceRange[1];
-
+    @GetMapping("/prices")
+    public List<VehicleDTO> getVehiclesByPrice(@RequestParam(value = "maxPrice",defaultValue = "1000000000") float minPrice,@RequestParam(value = "minPrice",defaultValue = "0") float maxPrice) throws VehicleNotFoundException {
+        System.out.println("maxPrice : "+maxPrice+" minPrice"+minPrice);
         if(minPrice>= 0 && maxPrice>minPrice){
             return iVehicleService.getVehiclesByPrice(minPrice,maxPrice);
         }else {
@@ -58,7 +58,7 @@ public class VehicleRestController {
         }
     }
 
-    @GetMapping("/sortedBy/{field}")
+    @GetMapping("/sort/{field}")
     public List<VehicleDTO> getVehiclesWithSort(@PathVariable String field){
         return iVehicleService.getVehicleWithSorting(field);
     }
@@ -66,5 +66,19 @@ public class VehicleRestController {
     public VehicleDTO updateVehicle(@PathVariable Long vehicleId,@RequestBody  VehicleDTO vehicleDTO) throws VehicleNotFoundException {
             vehicleDTO.setId(vehicleId);
             return iVehicleService.updateVehicle(vehicleDTO);
+    }
+
+    @GetMapping("/pagination/{offset}/{pageSize}")
+    public  List<VehicleDTO>findVehiclesWithPagination(
+            @PathVariable("offset") int offset, @PathVariable("pageSize") int pageSize ){
+
+        return this.iVehicleService.findVehiclesWithPagination(offset,pageSize);
+    }
+
+    @GetMapping("/paginationAndSort/{offset}/{pageSize}/{field}")
+    public  List<VehicleDTO>findVehiclesWithPaginationAndSort(
+            @PathVariable("offset") int offset, @PathVariable("pageSize") int pageSize,@PathVariable String field ){
+
+        return this.iVehicleService.findVehiclesWithPaginationAndSorting(offset,pageSize,field);
     }
 }

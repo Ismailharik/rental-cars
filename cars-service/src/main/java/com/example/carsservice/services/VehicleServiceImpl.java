@@ -11,6 +11,8 @@ import com.example.carsservice.dto.VehicleDTO;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -67,6 +69,22 @@ public class VehicleServiceImpl implements IVehicleService {
         log.info("Delete Vehicle");
         Vehicle vehicle = vehiculeRepository.findById(idVehicle).orElseThrow(()->new VehicleNotFoundException(idVehicle));
             vehiculeRepository.delete(vehicle);
+    }
+
+    @Override
+    public  List<VehicleDTO> findVehiclesWithPagination(int offset, int pageSize) {
+        List<VehicleDTO> vehiclesDto = vehiculeRepository.findAll(PageRequest.of(offset, pageSize)).stream().map(
+                vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
+        return vehiclesDto;
+    }
+
+    @Override
+    public List<VehicleDTO> findVehiclesWithPaginationAndSorting(int offset, int pageSize, String field) {
+        List<VehicleDTO> vehiclesDto = vehiculeRepository.findAll(
+                PageRequest.of(offset, pageSize)
+                        .withSort(Sort.by(field))
+                ).stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
+        return vehiclesDto;
     }
 
     @Override
