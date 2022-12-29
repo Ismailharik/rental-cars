@@ -14,5 +14,6 @@ import java.util.List;
 public interface  VehiculeRepository  extends JpaRepository<Vehicle,Long> {
     List<Vehicle> getVehicleByDailyPriceBetween(float min    ,float max);
     List<Vehicle> findAll();
+    List<Vehicle> findByOfficeId(int officeId);
 
 }

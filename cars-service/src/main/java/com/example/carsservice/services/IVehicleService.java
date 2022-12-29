@@ -28,4 +28,6 @@ public interface IVehicleService {
 
     List<byte[]> getVehicleImages(Long vehicleId) throws VehicleNotFoundException;
     byte[] getVehicleImage(Long vehicleId) throws VehicleNotFoundException, IOException;
+    List<VehicleDTO> getVehiclesByLocation(int officeId);
+
 }

@@ -31,9 +31,9 @@ public class Vehicle {
 
     @ManyToOne
     private Promo promo ;
-    @ManyToOne
+    @ManyToOne()
     private Category category;
-    private Long officeId;
+    private Long officeId;// location
 
 
 }

@@ -139,4 +139,11 @@ public class VehicleServiceImpl implements IVehicleService {
         return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/"+img));
     }
 
+    @Override
+    public List<VehicleDTO> getVehiclesByLocation(int officeId) {
+        List<Vehicle> vehicles = vehiculeRepository.findByOfficeId(officeId);
+        return vehicles.stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
+    }
+
+
 }

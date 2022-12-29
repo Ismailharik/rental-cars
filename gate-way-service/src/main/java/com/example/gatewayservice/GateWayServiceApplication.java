@@ -44,6 +44,8 @@ public class GateWayServiceApplication {
                         .uri("lb://customers-service"))
                 .route(r->r.path("/vehicles/**")
                         .uri("lb://cars-service"))
+                .route(r->r.path("/categories/**")
+                        .uri("lb://cars-service"))
                 .route(r->r.path("/offices/**","/employees/**")
                         .uri("lb://offices-service"))
                 .route(r->r.path("/reservations/**")

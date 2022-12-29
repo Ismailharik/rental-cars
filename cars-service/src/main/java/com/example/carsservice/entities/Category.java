@@ -1,6 +1,7 @@
 package com.example.carsservice.entities;
 
 import com.example.carsservice.utilities.TypeVehicle;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,5 +20,6 @@ public class Category {
     @Enumerated(EnumType.ORDINAL)
     private TypeVehicle typeVehicle;
     @OneToMany(mappedBy = "category")
+    @JsonIgnore()
     private List<Vehicle> vehicles;
 }

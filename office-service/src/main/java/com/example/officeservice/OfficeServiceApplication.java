@@ -38,13 +38,13 @@ public class OfficeServiceApplication {
 
 
 			for (int i = 0; i < 10; i++) {
-				Office office = new Office(i+1L,"casablanca"+1,"242","casablanca jamila "+i,null,null);
+				Office office = new Office(i+1L,"casablanca"+i,"242","casablanca jamila "+i,null,null);
 				offices.add(office);
 
 			}
 			officeRepository.saveAll(offices);
 			for (int i = 0; i < 10; i++) {
-				Employee employee=new Employee(i+1L,"casa"+1,"email"+i+"gmail.com","070366245","employee","casa Zn "+i+1,"2019-"+i+1+"-10",offices.get(i)) ;
+				Employee employee=new Employee(i+1L,"07"+i+"36624"+i,"email"+i+"gmail.com","casa cité num "+i,"employee","casa Zn "+i+1,"2019-"+i+1+"-10",offices.get(i)) ;
 				employees.add(employee);
 			}
 			for (int i = 9,j=0; i < 19; i++) {

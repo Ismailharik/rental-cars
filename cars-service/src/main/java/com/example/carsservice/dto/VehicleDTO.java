@@ -21,6 +21,6 @@ public class VehicleDTO {
     private List<String> images ; // Should be EAGER
     //private ArrayList<Reservation> reservations;
     private Promo promo ;
-    //private Category category;
+    private Category category;
     private Long officeId;
 }

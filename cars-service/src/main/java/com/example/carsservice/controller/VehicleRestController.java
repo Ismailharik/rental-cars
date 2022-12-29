@@ -13,9 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Collections;
+
 import java.util.List;
 
 
@@ -73,7 +71,10 @@ public class VehicleRestController {
 
         return this.iVehicleService.findVehiclesWithPagination(offset,pageSize);
     }
-
+    @GetMapping("/location/{officeId}")
+    public List<VehicleDTO> getVehiclesByLocation(@PathVariable("officeId") int officeId){
+        return this.iVehicleService.getVehiclesByLocation(officeId);
+    }
     @GetMapping("/paginationAndSort/{offset}/{pageSize}/{field}")
     public  List<VehicleDTO>findVehiclesWithPaginationAndSort(
             @PathVariable("offset") int offset, @PathVariable("pageSize") int pageSize,@PathVariable String field ){
@@ -94,8 +95,20 @@ public class VehicleRestController {
     }
     @GetMapping(path = "/image/{vehicleId}",produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] getVehicleImage(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
-
-
         return iVehicleService.getVehicleImage(vehicleId);
+    }
+
+    /*
+    * this endpoints destined for latest vehicles
+    * they will be used in the home page ( showing the latest images )
+    * they will be registered by vehicle Id
+    * */
+    @GetMapping(path = "/image/latest/{vehicleId}",produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getLatestVehiclesImages(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
+        return iVehicleService.getVehicleImage(vehicleId);
+    }
+    @PostMapping(value = "/images/latest/{vehicleId}")
+    public  void addLatestVehiclesImages(@PathVariable("vehicleId") Long vehicleId,MultipartFile file) throws Exception {
+        iVehicleService.addImageToVehicle(vehicleId,file);
     }
 }

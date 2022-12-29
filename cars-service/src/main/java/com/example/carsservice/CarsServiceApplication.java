@@ -14,10 +14,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 
 import java.text.ParseException;
@@ -42,23 +46,51 @@ public class CarsServiceApplication {
         String date1 = "22-06-2006";
 
 
-
+        List<Category> categories = new ArrayList<>();
         Category category1 =  new Category();
-        category1.setDescription("Economy");
+        category1.setDescription("Mini");
         category1.setTypeVehicle(TypeVehicle.Standard);
 
+        Category category2 =  new Category();
+        category2.setDescription("Elite");
+        category2.setTypeVehicle(TypeVehicle.LUXURY);
+
+        Category category3 =  new Category();
+        category3.setDescription("Economy");
+        category3.setTypeVehicle(TypeVehicle.COMPACT);
+
+        categories.add(category1);categories.add(category3);categories.add(category2);
+        categoryRepository.saveAll(categories);
 
         List<Vehicle> vehicles = new ArrayList(10);
-        for (int i = 0; i <10 ; i++) {
-            Vehicle vehicle = new Vehicle(i+1L,"range1","range rover model 200"+i,  2344+i*5,new Date(),
-                    294F, 48472+i*3,true,  null,null,category1,i+1L);
+        for (int i = 0; i <3 ; i++) {
+            Vehicle vehicle = new Vehicle(i+1L,"range"+i+1,"range rover model 200"+i, (2344+i*5),new Date(),
+                    294F, 48472+i*3,true,  null,null,categories.get(i),i+1L);
             vehicles.add(vehicle);
         }
+        for (int i = 3; i <6 ; i++) {
+            Vehicle vehicle = new Vehicle(i+1L,"range"+i+1,"range rover model 200"+i, (2344+i*5),new Date(),
+                    294F, 48472+i*3,true,  null,null,categories.get(i-3),i+1L);
+            vehicles.add(vehicle);
+        }
+        for (int i = 6; i <9 ; i++) {
+            Vehicle vehicle = new Vehicle(i+1L,"range"+i+1,"range rover model 200"+i, (2344+i*5),new Date(),
+                    294F, 48472+i*3,true,  null,null,categories.get(i-6),i+1L);
+            vehicles.add(vehicle);
+        }
+
 
         return args -> {
             categoryRepository.save(category1);
             vehiculeRepository.saveAll(vehicles);
         };
     }
-
+    @Configuration
+    public class RestConfiguration implements RepositoryRestConfigurer {
+        @Override
+        public void configureRepositoryRestConfiguration(
+                RepositoryRestConfiguration config, CorsRegistry cors) {
+            config.exposeIdsFor(Category.class);
+        }
+    }
 }
