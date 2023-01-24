@@ -17,6 +17,13 @@ public class FeignFallback implements CustomerRestClient,VehicleRestClient {
         return null;
 
     }
+
+    @Override
+    public Customer saveCustomer(Customer customer) {
+        System.out.println("Save Customer");
+        return null;
+    }
+
     @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;

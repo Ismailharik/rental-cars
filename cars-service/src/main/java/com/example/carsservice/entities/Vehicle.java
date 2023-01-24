@@ -25,6 +25,7 @@ public class Vehicle {
     private Date dateFirstCirculation;
     private float nbrOfKm;
     private float franchise;
+    private int model;
     private boolean available;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images =new ArrayList(); // Should allocate space here because I will add images

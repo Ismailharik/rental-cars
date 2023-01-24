@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @AllArgsConstructor
+@RestController
 @RequestMapping("/reservations")
-@CrossOrigin("*")
 public class ReservationController {
     private static Logger logger = LoggerFactory.getLogger(ReservationController.class);
     private IReservation iReservation;
@@ -43,6 +42,7 @@ public class ReservationController {
         logger.info("delete reservation");
         iReservation.deleteReservation(reservationId);
     }
+
     @PostMapping("")
     public ReservationDTO addReservation(@RequestBody ReservationDTO reservationDTO) throws CustomerNotFoundException {
         logger.info("add Reservations");

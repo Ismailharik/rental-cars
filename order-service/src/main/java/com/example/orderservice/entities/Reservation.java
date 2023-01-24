@@ -18,9 +18,13 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date departureDate;
-    private Date returnDate ;
+    private Date pickUpDate;
+    private int duration ;
+    private int officeId;
+    private Long vehicleId;
     private float totalPrice;
+
+    
     private boolean isPaid;
     private boolean confirmed;
     //@ManyToOne()
@@ -29,7 +33,6 @@ public class Reservation {
     private Customer customer;// In case user need more details about customer
 
     // @ManyToOne()
-    private Long vehicleId;
     @Transient
     private Vehicle vehicle;// In case user need more details about Vehicle
 }

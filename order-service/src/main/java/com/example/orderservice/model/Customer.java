@@ -8,6 +8,7 @@ public class Customer {
     private Long id;
     private String phone;
     private String email;
-    private Date birthdate;
+    private String fullName;
+
 
 }

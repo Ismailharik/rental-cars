@@ -4,7 +4,7 @@ package com.example.carsservice;
 import com.example.carsservice.entities.Category;
 import com.example.carsservice.entities.Vehicle;
 import com.example.carsservice.repositories.CategoryRepository;
-import com.example.carsservice.repositories.VehiculeRepository;
+import com.example.carsservice.repositories.VehicleRepository;
 import com.example.carsservice.utilities.TypeVehicle;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -39,7 +39,7 @@ public class CarsServiceApplication {
 
 
     @Bean
-    CommandLineRunner start(VehiculeRepository vehiculeRepository,
+    CommandLineRunner start(VehicleRepository vehicleRepository,
                             CategoryRepository categoryRepository
                             ) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -65,24 +65,24 @@ public class CarsServiceApplication {
         List<Vehicle> vehicles = new ArrayList(10);
         for (int i = 0; i <3 ; i++) {
             Vehicle vehicle = new Vehicle(i+1L,"range"+i+1,"range rover model 200"+i, (2344+i*5),new Date(),
-                    294F, 48472+i*3,true,  null,null,categories.get(i),i+1L);
+                    294F, 48472+i*3,2000+i,true,  null,null,categories.get(i),i+1L);
             vehicles.add(vehicle);
         }
         for (int i = 3; i <6 ; i++) {
             Vehicle vehicle = new Vehicle(i+1L,"range"+i+1,"range rover model 200"+i, (2344+i*5),new Date(),
-                    294F, 48472+i*3,true,  null,null,categories.get(i-3),i+1L);
+                    294F, 48472+i*3,2000,true,  null,null,categories.get(i-3),i+1L);
             vehicles.add(vehicle);
         }
         for (int i = 6; i <9 ; i++) {
             Vehicle vehicle = new Vehicle(i+1L,"range"+i+1,"range rover model 200"+i, (2344+i*5),new Date(),
-                    294F, 48472+i*3,true,  null,null,categories.get(i-6),i+1L);
+                    294F, 48472+i*3,2000+i,true,  null,null,categories.get(i-6),i+1L);
             vehicles.add(vehicle);
         }
 
 
         return args -> {
             categoryRepository.save(category1);
-            vehiculeRepository.saveAll(vehicles);
+            vehicleRepository.saveAll(vehicles);
         };
     }
     @Configuration

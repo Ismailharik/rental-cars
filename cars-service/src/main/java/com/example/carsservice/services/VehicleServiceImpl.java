@@ -6,7 +6,7 @@ import com.example.carsservice.entities.Vehicle;
 import com.example.carsservice.exceptions.CategoryNotFoundException;
 import com.example.carsservice.mappers.CarsMapper;
 import com.example.carsservice.repositories.CategoryRepository;
-import com.example.carsservice.repositories.VehiculeRepository;
+import com.example.carsservice.repositories.VehicleRepository;
 import com.example.carsservice.dto.VehicleDTO;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 public class VehicleServiceImpl implements IVehicleService {
-    private VehiculeRepository vehiculeRepository;
+    private VehicleRepository vehiculeRepository;
     private CategoryRepository categoryRepository;
     private CarsMapper carsMapper;
 

@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/vehicles")
-@CrossOrigin("*")
+
 public class VehicleRestController {
     private static Logger log = LoggerFactory.getLogger(VehicleRestController.class);
 

@@ -97,6 +97,7 @@
 			<artifactId>spring-cloud-starter-circuitbreaker-spring-retry</artifactId>
 		</dependency>
 
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

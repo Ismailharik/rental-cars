@@ -17,6 +17,7 @@ public class VehicleDTO {
     private Date dateFirstCirculation;
     private float nbrOfKm;
     private float franchise;
+    private int model;
     private boolean available;
     private List<String> images ; // Should be EAGER
     //private ArrayList<Reservation> reservations;

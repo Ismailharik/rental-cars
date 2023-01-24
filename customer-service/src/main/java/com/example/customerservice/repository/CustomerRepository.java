@@ -2,11 +2,10 @@ package com.example.customerservice.repository;
 
 import com.example.customerservice.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 
-
-@RepositoryRestResource(collectionResourceRel = "customers", path = "customers")
+@Repository
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
-
+    Customer findByEmail(String email);
 }

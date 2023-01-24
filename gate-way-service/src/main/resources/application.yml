@@ -12,3 +12,16 @@ springdoc:
   version: '@springdoc.version@'
   swagger-ui:
     use-root-path: true
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
