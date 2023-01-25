@@ -20,6 +20,7 @@ public class VehicleDTO {
     private int model;
     private boolean available;
     private List<String> images ; // Should be EAGER
+    private  List<String> urls;
     //private ArrayList<Reservation> reservations;
     private Promo promo ;
     private Category category;

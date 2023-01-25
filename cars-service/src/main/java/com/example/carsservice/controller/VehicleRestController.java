@@ -5,10 +5,12 @@ import com.example.carsservice.exceptions.CategoryNotFoundException;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
 import com.example.carsservice.services.IVehicleService;
 import com.example.carsservice.dto.VehicleDTO;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -82,20 +84,14 @@ public class VehicleRestController {
         return this.iVehicleService.findVehiclesWithPaginationAndSorting(offset,pageSize,field);
     }
     @PostMapping(value = "/images/{vehicleId}")
-    public  void addImageToVehicle(@PathVariable("vehicleId") Long vehicleId,MultipartFile file) throws Exception {
-        iVehicleService.addImageToVehicle(vehicleId,file);
+    public  void addImageToVehicle(HttpServletRequest request,@PathVariable("vehicleId") Long vehicleId,MultipartFile file) throws Exception {
+        String url = request.getRequestURL().toString();
+        iVehicleService.addImageToVehicle(vehicleId,file,url);
     }
-    @GetMapping(path = "/images/{vehicleId}")
-    public List<byte[]> getVehicleImages(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
 
-        // get one img
-   //   return Files.readAllBytes(
-     //           Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/car2.jpg"));
-        return iVehicleService.getVehicleImages(vehicleId);
-    }
-    @GetMapping(path = "/image/{vehicleId}",produces = MediaType.IMAGE_PNG_VALUE)
-    public byte[] getVehicleImage(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
-        return iVehicleService.getVehicleImage(vehicleId);
+    @GetMapping(path = "/images/{vehicleId}/{index}",produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getVehicleImage(@PathVariable(name = "vehicleId") Long vehicleId, @PathVariable int index) throws Exception{
+        return iVehicleService.getVehicleImage(vehicleId,index);
     }
 
     /*
@@ -103,12 +99,24 @@ public class VehicleRestController {
     * they will be used in the home page ( showing the latest images )
     * they will be registered by vehicle Id
     * */
-    @GetMapping(path = "/image/latest/{vehicleId}",produces = MediaType.IMAGE_PNG_VALUE)
-    public byte[] getLatestVehiclesImages(@PathVariable(name = "vehicleId") Long vehicleId) throws Exception{
-        return iVehicleService.getVehicleImage(vehicleId);
-    }
+    // i think I should delete this image
     @PostMapping(value = "/images/latest/{vehicleId}")
-    public  void addLatestVehiclesImages(@PathVariable("vehicleId") Long vehicleId,MultipartFile file) throws Exception {
-        iVehicleService.addImageToVehicle(vehicleId,file);
+    public  void addLatestVehiclesImages( HttpServletRequest request,@PathVariable("vehicleId") Long vehicleId,MultipartFile file) throws Exception {
+        /*
+            I have got the HttpRequest to get the api called for store the full src image
+            while I know the actual api to make it dynamic , if I change the port or the api
+            I won't find any problem
+        */
+        String url = request.getRequestURL().toString();
+        iVehicleService.addImageToVehicle(vehicleId,file,url);
+    }
+    @DeleteMapping(value = "/images/{vehicleId}/{imageIndex}")
+    public void deleteImage(@PathVariable Long vehicleId,@PathVariable int imageIndex) throws Exception {
+        System.out.println(vehicleId +"---" +imageIndex);
+        iVehicleService.deleteImageFromVehicle(vehicleId,imageIndex);
+    }
+    @PutMapping("/images/{vehicleId}/{imageIndex}")
+    public void updateImage(@PathVariable Long vehicleId,@PathVariable int imageIndex,MultipartFile file) throws VehicleNotFoundException, Exception{
+        iVehicleService.updateImage(vehicleId, imageIndex,file);
     }
 }

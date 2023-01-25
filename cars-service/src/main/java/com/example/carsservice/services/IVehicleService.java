@@ -5,6 +5,7 @@ import com.example.carsservice.entities.Vehicle;
 import com.example.carsservice.exceptions.CategoryNotFoundException;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -17,7 +18,6 @@ public interface IVehicleService {
 
     List<VehicleDTO> getVehiclesByPrice(float minPrice, float maxPrice) throws VehicleNotFoundException;
 
-    void addImageToVehicle(Long id, MultipartFile multipartFile) throws Exception;
     VehicleDTO addVehicle(VehicleDTO vehicleDTO,Long idCategory) throws CategoryNotFoundException;
     VehicleDTO updateVehicle(VehicleDTO vehicleDTO) throws VehicleNotFoundException;
     void deleteVehicle(Long idVehicle) throws VehicleNotFoundException;
@@ -25,9 +25,11 @@ public interface IVehicleService {
     List<VehicleDTO> findVehiclesWithPagination(int offset,int pageSize);
     List<VehicleDTO> findVehiclesWithPaginationAndSorting(int offset,int pageSize,String field);
 
+    void addImageToVehicle(Long id, MultipartFile multipartFile,String url) throws Exception;
 
-    List<byte[]> getVehicleImages(Long vehicleId) throws VehicleNotFoundException;
-    byte[] getVehicleImage(Long vehicleId) throws VehicleNotFoundException, IOException;
+    byte[] getVehicleImage(Long vehicleId,int index) throws VehicleNotFoundException, IOException;
     List<VehicleDTO> getVehiclesByLocation(int officeId);
+    void deleteImageFromVehicle(Long vehicleId,int imageIndex) throws Exception;
 
+    void updateImage(Long vehicleId,int imageIndex,MultipartFile multipartFile) throws VehicleNotFoundException,IOException;
 }

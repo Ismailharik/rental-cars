@@ -101,43 +101,6 @@ public class VehicleServiceImpl implements IVehicleService {
         return vehicles.stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
     }
 
-    @Override
-    public void addImageToVehicle(Long id, MultipartFile file) throws Exception {
-        Vehicle vehicle = vehiculeRepository.findById(id).orElseThrow(()->new CategoryNotFoundException(id));
-
-        String imageName = file.getOriginalFilename();
-        System.out.println(imageName);
-        vehicle.getImages().add(imageName);// imageName + it's extension
-        vehiculeRepository.save(vehicle);
-        Files.write(Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/"+imageName), file.getBytes());
-        //vehiculeRepository.save(vehicle);
-    }
-
-    @Override
-    public List<byte[]>     getVehicleImages(Long vehicleId) throws VehicleNotFoundException {
-        Vehicle vehicle = vehiculeRepository.findById(
-                vehicleId).orElseThrow(() -> new VehicleNotFoundException(vehicleId));
-
-        return vehicle.getImages().stream().
-                map(img -> {
-                    try {
-                        return Files.readAllBytes(
-                                Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/"+img));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }).toList();
-
-    }
-
-    @Override
-    public byte[] getVehicleImage(Long vehicleId) throws VehicleNotFoundException, IOException {
-        Vehicle vehicle = vehiculeRepository.findById(vehicleId)
-                .orElseThrow(() -> new VehicleNotFoundException(vehicleId));
-
-        String img = vehicle.getImages().get(0);
-        return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/rental-app/vehicles/"+img));
-    }
 
     @Override
     public List<VehicleDTO> getVehiclesByLocation(int officeId) {
@@ -145,5 +108,50 @@ public class VehicleServiceImpl implements IVehicleService {
         return vehicles.stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
     }
 
+    @Override
+    public void deleteImageFromVehicle(Long id, int imageIndex) throws Exception {
+        Vehicle vehicle = vehiculeRepository.findById(id).orElseThrow(()->new VehicleNotFoundException(id));
+
+        String imageName = vehicle.getImages().get(imageIndex);
+        vehicle.getImages().remove(imageIndex);
+        vehiculeRepository.save(vehicle);
+
+        Files.delete(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName));
+    }
+    @Override
+    public void addImageToVehicle(Long id, MultipartFile file,String url) throws Exception {
+        // Images name  = vahicleId + _ + index of this image
+        Vehicle vehicle = vehiculeRepository.findById(id).orElseThrow(()->new CategoryNotFoundException(id));
+
+//        String imageName = file.getOriginalFilename();
+        int index = vehicle.getImages().size();
+        String imageName = vehicle.getId() +"_"+ index+".jpg";
+        String src = url+"/"+index; //the image url
+
+        vehicle.getImages().add(imageName);// imageName + it's extension
+        vehicle.getUrls().add(src);
+        System.out.println(imageName);
+        vehiculeRepository.save(vehicle);
+        Files.write(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName), file.getBytes());
+        //vehiculeRepository.save(vehicle);
+    }
+
+
+    @Override
+    public byte[] getVehicleImage(Long vehicleId,int index) throws VehicleNotFoundException, IOException {
+        Vehicle vehicle = vehiculeRepository.findById(vehicleId)
+                .orElseThrow(() -> new VehicleNotFoundException(vehicleId));
+
+        String img = vehicle.getImages().get(index);
+        return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+img));
+    }
+
+    @Override
+    public void updateImage(Long vehicleId,int imageIndex,MultipartFile file) throws IOException, VehicleNotFoundException {
+        Vehicle vehicle = vehiculeRepository.findById(vehicleId).orElseThrow(()->new VehicleNotFoundException(vehicleId));
+        String imageName = vehicle.getImages().get(imageIndex);
+        Files.delete(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName));
+        Files.write(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName), file.getBytes());
+    }
 
 }

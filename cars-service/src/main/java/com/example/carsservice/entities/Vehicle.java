@@ -29,7 +29,8 @@ public class Vehicle {
     private boolean available;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images =new ArrayList(); // Should allocate space here because I will add images
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    private  List<String> urls=new ArrayList<>();
     @ManyToOne
     private Promo promo ;
     @ManyToOne()
