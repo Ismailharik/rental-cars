@@ -58,6 +58,9 @@ public class IReservationImpl implements IReservation {
         Reservation reservation = reservationMapper.fromReservationDTOToReservation(reservationDTO);
         Customer customer = customerRestClient.saveCustomer(reservationDTO.getCustomer());
         Vehicle vehicle = vehicleRestClient.getVehicleById(reservation.getVehicleId());
+
+
+        reservation.setTotalPrice( reservation.getDuration()* vehicle.getDailyPrice());
         reservation.setVehicle(vehicle);
         reservation.setCustomer(customer);
         return reservationMapper.fromReservationToReservationDTO(reservationRepository.save(reservation));

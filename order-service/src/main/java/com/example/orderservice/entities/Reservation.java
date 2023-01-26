@@ -23,8 +23,6 @@ public class Reservation {
     private int officeId;
     private Long vehicleId;
     private float totalPrice;
-
-    
     private boolean isPaid;
     private boolean confirmed;
     //@ManyToOne()

@@ -38,7 +38,7 @@ public class OrderServiceApplication {
 			List<Reservation> reservations = new ArrayList<>(10);
 			for (int i = 0; i <10 ; i++) {
 								reservations.add(new Reservation(null,new Date(),3,i+1,i+1L,
-										(i+1)*13,false, false,
+										(i+1)*10+i/10,false , false,
 										 i+1L,null, null));
 			}
 			reservationRepository.saveAll(reservations);
