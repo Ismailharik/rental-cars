@@ -16,9 +16,11 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String phone;
+    private String fullName;
     private String email;
     private String password;
     private Date birthdate;
+    private boolean status;
 //    @OneToMany(mappedBy = "customer")
 //    private List<Reservation> reservations;
 }

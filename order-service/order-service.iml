@@ -117,7 +117,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-cache:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.stoyanr:evictor:1.0.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:2.1.214" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:3.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:3.0.0" level="project" />
@@ -214,5 +213,6 @@
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-circuitbreaker-spring-retry:3.0.0-RC2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-circuitbreaker-spring-retry:3.0.0-RC2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:2.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.mysql:mysql-connector-j:8.0.31" level="project" />
   </component>
 </module>

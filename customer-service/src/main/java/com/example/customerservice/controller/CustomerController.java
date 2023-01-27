@@ -37,7 +37,19 @@ public class CustomerController {
         log.info(String.valueOf(customer));
         return this.customerService.addCustomer(customer);
     }
+    @PutMapping()
+    public Customer updateCustomer(@RequestBody Customer customer){
+        log.info(String.valueOf(customer));
+        return this.customerService.updateCustomer(customer);
+    }
 
+    @GetMapping("/totalClient")
+    public long totalClient(){
+        return this.customerService.getTotalClient();
+    }
 
-
+    @DeleteMapping("/{id}")
+    public void deleteCustomer(@PathVariable Long id){
+        this.customerService.deleteCustomer(id);
+    }
 }

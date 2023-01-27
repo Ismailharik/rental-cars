@@ -51,6 +51,8 @@ public class GateWayServiceApplication {
                         .uri("lb://offices-service"))
                 .route(r->r.path("/reservations/**")
                         .uri("lb://order-service"))
+                .route(r->r.path("/stockFeedBack/**")
+                        .uri("lb://order-service"))
                 .build();
     }
     @Bean

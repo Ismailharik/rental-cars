@@ -29,9 +29,11 @@ public class CustomerServiceApplication {
 	CommandLineRunner start(CustomerRepository customerRepository) {
 		List<Customer> customers = new ArrayList<>(10);
 		for (int i = 0; i < 10; i++) {
-			customers.add(new Customer(null, "053543" + i, "ismail" + i + "gmail.com","1234", new Date()));
+			customers.add(new Customer(null, "053543" + i, "ismail "+i+1,"ismail" + i + "gmail.com","1234", new Date(),true));
 		}
 		return args -> {
+			customers.get(4).setStatus(false);
+			customers.get(7).setStatus(false);
 
 			customerRepository.saveAll(customers);
 		};

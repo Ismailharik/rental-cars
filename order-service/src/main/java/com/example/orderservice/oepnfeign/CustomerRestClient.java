@@ -18,5 +18,6 @@ public interface CustomerRestClient {
     @PostMapping("/customers")
     public Customer saveCustomer(@RequestBody Customer customer) ;
 
-
+    @GetMapping("/customers/totalClient")
+    long getTotalClient();
 }

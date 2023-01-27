@@ -2,6 +2,7 @@ package com.example.orderservice.services;
 
 import com.example.orderservice.dto.ReservationDTO;
 import com.example.orderservice.entities.Reservation;
+import com.example.orderservice.entities.StockFeedback;
 import com.example.orderservice.exceptions.ReservationNotFoundException;
 import com.example.orderservice.mappers.ReservationMapper;
 import com.example.orderservice.model.Customer;
@@ -9,6 +10,7 @@ import com.example.orderservice.model.Vehicle;
 import com.example.orderservice.oepnfeign.CustomerRestClient;
 import com.example.orderservice.oepnfeign.VehicleRestClient;
 import com.example.orderservice.repositories.ReservationRepository;
+import com.example.orderservice.repositories.StockFeedBackRepository;
 import com.example.orderservice.web.ReservationController;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuit
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -24,6 +27,7 @@ import java.util.List;
 @Service
 public class IReservationImpl implements IReservation {
     ReservationRepository reservationRepository;
+    StockFeedBackRepository stockFeedBackRepository;
     ReservationMapper reservationMapper;
     VehicleRestClient vehicleRestClient;
     CustomerRestClient customerRestClient;
@@ -36,6 +40,7 @@ public class IReservationImpl implements IReservation {
 
 
         List<Reservation> reservations = reservationRepository.findAll();
+
 
          return reservations.stream().map(r ->reservationMapper.fromReservationToReservationDTO(r) ).toList();
     }
@@ -58,18 +63,39 @@ public class IReservationImpl implements IReservation {
         Reservation reservation = reservationMapper.fromReservationDTOToReservation(reservationDTO);
         Customer customer = customerRestClient.saveCustomer(reservationDTO.getCustomer());
         Vehicle vehicle = vehicleRestClient.getVehicleById(reservation.getVehicleId());
-
-
+        System.out.println(vehicle);
         reservation.setTotalPrice( reservation.getDuration()* vehicle.getDailyPrice());
         reservation.setVehicle(vehicle);
         reservation.setCustomer(customer);
-        return reservationMapper.fromReservationToReservationDTO(reservationRepository.save(reservation));
+        reservationDTO = reservationMapper.fromReservationToReservationDTO(reservationRepository.save(reservation));
+
+        this.orderFeedBack(reservation.getTotalPrice(),vehicle.getTitle());
+
+        return reservationDTO;
     }
     @Override
     public List<ReservationDTO> vehicleReservations(Long vehicleId){
         List<Reservation> reservations = reservationRepository.getReservationsByVehicleId(vehicleId);
         return reservations.stream().map(v->reservationMapper.fromReservationToReservationDTO(v)).toList();
     }
+
+
+
+    public void orderFeedBack( double price, String vehicleTitle) {
+        StockFeedback stockFeedback=this.stockFeedBackRepository.findLastRegistrationByCategory(vehicleTitle);
+        if(stockFeedback!=null && stockFeedback.getDate().getMonth()== LocalDate.now().getMonth()){
+            /*CASE SAME MONTH */
+
+            double totalPrice = stockFeedback.getTotalPrice()+price;
+            stockFeedback.setTotalPrice(totalPrice);
+        }else{
+            /*REGISTER NEW MONTH */
+
+            stockFeedback = new StockFeedback(null,LocalDate.now(),price);
+        }
+        stockFeedBackRepository.save(stockFeedback);
+    }
+
     @Override
     public void deleteReservation(Long reservationId) {
         Reservation reservation = reservationRepository.findById(reservationId).get();

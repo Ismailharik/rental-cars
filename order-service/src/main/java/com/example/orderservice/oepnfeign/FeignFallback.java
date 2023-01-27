@@ -24,6 +24,12 @@ public class FeignFallback implements CustomerRestClient,VehicleRestClient {
         return null;
     }
 
+    @Override
+    public long getTotalClient() {
+        System.out.println("total price");
+        return -1;
+    }
+
     @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
