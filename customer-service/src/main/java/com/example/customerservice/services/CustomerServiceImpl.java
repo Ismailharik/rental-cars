@@ -3,6 +3,8 @@ package com.example.customerservice.services;
 import com.example.customerservice.entities.Customer;
 import com.example.customerservice.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +16,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+
+        return this.customerRepository.findAll();
     }
 
     @Override
@@ -31,9 +34,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer addCustomer(Customer customer) {
        Customer registeredCustomer = customerRepository.findByEmail(customer.getEmail());
-       
+       long id = customerRepository.count()+1;//
         if(registeredCustomer==null){
-            System.out.println(registeredCustomer);
+            customer.setId(id);
+            System.out.println(customer);
             return customerRepository.save(customer);
         }
         return registeredCustomer;

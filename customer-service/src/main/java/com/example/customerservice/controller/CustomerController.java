@@ -27,11 +27,11 @@ public class CustomerController {
     public Customer getCustomerById(@PathVariable Long customerId){
         return this.customerService.getCustomerById(customerId);
     }
-    @GetMapping()
-    public List<Customer> getAllCustomers(){
-        log.info("get all customers");
-        return this.customerService.getAllCustomers();
-    }
+        @GetMapping()
+        public List<Customer> getAllCustomers(){
+            log.info("get all customers");
+            return this.customerService.getAllCustomers();
+        }
     @PostMapping()
     public Customer saveCustomer(@RequestBody Customer customer){
         log.info(String.valueOf(customer));

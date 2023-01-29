@@ -12,8 +12,8 @@ public interface StockFeedBackRepository extends JpaRepository<StockFeedback,Lon
 
     @Query(value = "SELECT * FROM `stock_feedback` GROUP BY MONTH( DATE )  ",nativeQuery = true)
      List<StockFeedback> getAllOrdersByDate() ;
-    @Query(value = "SELECT * FROM stock_feedback WHERE vehicle_title=:vehicleTitle ORDER BY date DESC LIMIT 1",nativeQuery = true)
-    StockFeedback findLastRegistrationByCategory(String vehicleTitle);
+    @Query(value = "SELECT * FROM stock_feedback ORDER BY date DESC LIMIT 1",nativeQuery = true)
+    StockFeedback findLastRegistration();
     // to get stock feed back of the actual month
     @Query(value = "SELECT SUM(total_price) total_price FROM `stock_feedback` GROUP BY MONTH( DATE )  DESC LIMIT 1",nativeQuery = true)
     float totalPriceByLastMonth();

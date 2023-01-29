@@ -69,7 +69,7 @@ public class IReservationImpl implements IReservation {
         reservation.setCustomer(customer);
         reservationDTO = reservationMapper.fromReservationToReservationDTO(reservationRepository.save(reservation));
 
-        this.orderFeedBack(reservation.getTotalPrice(),vehicle.getTitle());
+        this.orderFeedBack(reservation.getTotalPrice());
 
         return reservationDTO;
     }
@@ -81,8 +81,8 @@ public class IReservationImpl implements IReservation {
 
 
 
-    public void orderFeedBack( double price, String vehicleTitle) {
-        StockFeedback stockFeedback=this.stockFeedBackRepository.findLastRegistrationByCategory(vehicleTitle);
+    public void orderFeedBack( double price) {
+        StockFeedback stockFeedback=this.stockFeedBackRepository.findLastRegistration();
         if(stockFeedback!=null && stockFeedback.getDate().getMonth()== LocalDate.now().getMonth()){
             /*CASE SAME MONTH */
 
