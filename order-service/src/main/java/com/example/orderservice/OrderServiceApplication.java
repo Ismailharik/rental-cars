@@ -57,19 +57,5 @@ public class OrderServiceApplication {
 		};
 	}
 
-	@WebFilter("/*")
-	public class CORSFilter implements Filter {
-
-		public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-			HttpServletResponse response = (HttpServletResponse) res;
-			response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-			response.setHeader("Access-Control-Allow-Methods", "POST");
-			chain.doFilter(req, res);
-		}
-
-		public void init(FilterConfig filterConfig) {}
-
-		public void destroy() {}
-	}
 
 }

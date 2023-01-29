@@ -9,9 +9,9 @@ import com.example.carsservice.repositories.CategoryRepository;
 import com.example.carsservice.repositories.VehicleRepository;
 import com.example.carsservice.dto.VehicleDTO;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -59,9 +59,18 @@ public class VehicleServiceImpl implements IVehicleService {
     public VehicleDTO updateVehicle(VehicleDTO vehicleDTO)throws VehicleNotFoundException {
         log.info("Update Vehicle");
         Vehicle vhl = vehiculeRepository.findById(vehicleDTO.getId()).orElseThrow(()->new VehicleNotFoundException(vehicleDTO.getId()));
-         Vehicle vehicle =carsMapper.fromVehicleDtoToVehicle(vehicleDTO);
-         vehicle.setCategory(vhl.getCategory());
-        vehicle=vehiculeRepository.save(vehicle);
+
+        Vehicle vehicle =carsMapper.fromVehicleDtoToVehicle(vehicleDTO);
+        vehicle.setCategory(vhl.getCategory());
+
+        //IMAGES SHOULD PRESERVE THEIR OLD VALUES BACAUSE THEY WON'T CHANGE HERE (BECAUSE THEY ARE NULL IN vehicleDTO IN THIS CASE)
+        // THERE SPECIFIC API FOR CHANGING IMG ...
+
+         vehicle.setUrls(vhl.getUrls());
+         vehicle.setImages(vhl.getImages());
+
+
+         vehicle=vehiculeRepository.save(vehicle);
         return carsMapper.fromVehicleToVehicleDto(vehicle);
     }
 
@@ -114,6 +123,8 @@ public class VehicleServiceImpl implements IVehicleService {
 
         String imageName = vehicle.getImages().get(imageIndex);
         vehicle.getImages().remove(imageIndex);
+        vehicle.getUrls().remove(imageIndex);
+
         vehiculeRepository.save(vehicle);
 
         Files.delete(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName));

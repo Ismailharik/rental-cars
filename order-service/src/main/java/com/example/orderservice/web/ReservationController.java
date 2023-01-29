@@ -48,7 +48,7 @@ public class ReservationController {
         logger.info("add Reservations");
         return  iReservation.reserveVehicle(reservationDTO);
     }
-    @PatchMapping("")
+    @PutMapping("")
     public  ReservationDTO updateReservation(@RequestBody ReservationDTO reservationDTO){
         logger.info("update reservation");
         return iReservation.updateReservation(reservationDTO);

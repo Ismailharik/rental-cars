@@ -1,6 +1,7 @@
 package com.example.carsservice.controller;
 
 
+import com.example.carsservice.entities.Vehicle;
 import com.example.carsservice.exceptions.CategoryNotFoundException;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
 import com.example.carsservice.services.IVehicleService;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +24,6 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/vehicles")
-
 public class VehicleRestController {
     private static Logger log = LoggerFactory.getLogger(VehicleRestController.class);
 
@@ -39,6 +40,7 @@ public class VehicleRestController {
     }
     @PostMapping(path = "/{idCategory}")
     public VehicleDTO addVehicle(@RequestBody VehicleDTO vehicleDTO,@PathVariable Long idCategory) throws CategoryNotFoundException {
+       log.info("add vehicle");
         return iVehicleService.addVehicle(vehicleDTO,idCategory);
     }
 
@@ -61,7 +63,7 @@ public class VehicleRestController {
     public List<VehicleDTO> getVehiclesWithSort(@PathVariable String field){
         return iVehicleService.getVehicleWithSorting(field);
     }
-    @RequestMapping(path="/products/{vehicleId}",method = RequestMethod.PATCH)
+    @PutMapping(path="/{vehicleId}")
     public VehicleDTO updateVehicle(@PathVariable Long vehicleId,@RequestBody  VehicleDTO vehicleDTO) throws VehicleNotFoundException {
             vehicleDTO.setId(vehicleId);
             return iVehicleService.updateVehicle(vehicleDTO);
@@ -84,7 +86,9 @@ public class VehicleRestController {
         return this.iVehicleService.findVehiclesWithPaginationAndSorting(offset,pageSize,field);
     }
     @PostMapping(value = "/images/{vehicleId}")
-    public  void addImageToVehicle(HttpServletRequest request,@PathVariable("vehicleId") Long vehicleId,MultipartFile file) throws Exception {
+    public  void addImageToVehicle(HttpServletRequest request,@PathVariable("vehicleId") Long vehicleId,@RequestBody MultipartFile file) throws Exception {
+        log.info("add vehicle");
+
         String url = request.getRequestURL().toString();
         iVehicleService.addImageToVehicle(vehicleId,file,url);
     }
