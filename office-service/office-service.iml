@@ -136,7 +136,7 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-core:12.0" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-slf4j:12.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:2.1.214" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.oracle.database.jdbc:ojdbc8:21.7.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:3.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:3.0.0" level="project" />

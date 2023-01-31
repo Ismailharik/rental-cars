@@ -48,6 +48,12 @@
             <version>2.0.0</version>
             <scope>compile</scope>
         </dependency>
+        <!-- Start this dependencies used for zipkin  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

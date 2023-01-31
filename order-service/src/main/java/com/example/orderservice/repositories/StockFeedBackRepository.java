@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface StockFeedBackRepository extends JpaRepository<StockFeedback,Long> {
 
-    @Query(value = "SELECT * FROM `stock_feedback` GROUP BY MONTH( DATE )  ",nativeQuery = true)
+    @Query(value = "SELECT * FROM `stock_feedback` GROUP BY DATE  ",nativeQuery = true)
      List<StockFeedback> getAllOrdersByDate() ;
-    @Query(value = "SELECT * FROM stock_feedback ORDER BY date DESC LIMIT 1",nativeQuery = true)
+    @Query(value = "SELECT * FROM stock_feedback ORDER BY DATE DESC LIMIT 1",nativeQuery = true)
     StockFeedback findLastRegistration();
     // to get stock feed back of the actual month
     @Query(value = "SELECT SUM(total_price) total_price FROM `stock_feedback` GROUP BY MONTH( DATE )  DESC LIMIT 1",nativeQuery = true)
