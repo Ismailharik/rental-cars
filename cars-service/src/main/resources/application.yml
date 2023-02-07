@@ -1,2 +1,62 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: cars-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:8888
+  cloud:
+    consul:
+      port: ${CONSUL_PORT:8500}
+      host: ${CONSUL_HOST:localhost}
+    openfeign:
+      client:
+        default-to-properties: 'false'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+    defer-datasource-initialization: 'true'
+    hibernate:
+      ddl-auto: create
+    show-sql: 'true'
+  datasource:
+    password: 1234
+    username: root
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:vehicles-service-db}?createDatabaseIfNotExist=true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  sql:
+    init:
+      mode: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVER}
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+
 springdoc:
   version: '@springdoc.version@'

@@ -1,0 +1,17 @@
+com\example\carsservice\entities\Promo.class
+com\example\carsservice\repositories\CategoryRepository.class
+com\example\carsservice\exceptions\CategoryNotFoundException.class
+com\example\carsservice\dto\VehicleDTO.class
+com\example\carsservice\swagger\SwaggerConfig.class
+com\example\carsservice\entities\Vehicle.class
+com\example\carsservice\utilities\TypeVehicle.class
+com\example\carsservice\services\VehicleServiceImpl.class
+com\example\carsservice\services\IVehicleService.class
+com\example\carsservice\repositories\PromoRepository.class
+com\example\carsservice\CarsServiceApplication.class
+com\example\carsservice\exceptions\VehicleNotFoundException.class
+com\example\carsservice\controller\VehicleRestController.class
+com\example\carsservice\entities\Category.class
+com\example\carsservice\mappers\CarsMapper.class
+com\example\carsservice\repositories\VehicleRepository.class
+com\example\carsservice\CarsServiceApplication$RestConfiguration.class

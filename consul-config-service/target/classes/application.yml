@@ -1,0 +1,18 @@
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#spring:
+#  cloud:
+#    vault:
+#      kv:
+#        enabled: 'true'
+#      scheme: http
+#      token: root
+#  config:
+#    import: 'optional:consul:, vault:// '
+#  application:
+#    name: consul-config-service
+#server:
+#  port: '8085'

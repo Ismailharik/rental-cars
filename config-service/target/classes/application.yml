@@ -1,0 +1,15 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      discovery:
+        enabled: 'true'
+      server:
+        git:
+          uri: https://github.com/Ismailharik/rental-cars-config.git
+    consul:
+      port: ${CONSUL_PORT:8500}
+      host: ${CONSUL_HOST:localhost}

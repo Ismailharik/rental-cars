@@ -95,7 +95,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.4.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:2.4.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:9.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.4" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:4.0.0" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:2.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.23.1" level="project" />
@@ -144,5 +143,17 @@
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-core:1.10.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.hdrhistogram:HdrHistogram:2.1.12" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.latencyutils:LatencyUtils:2.0.3" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:micrometer-tracing-bridge-brave:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:micrometer-tracing:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:context-propagation:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.4" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave:5.14.1" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-context-slf4j:5.14.1" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-http:5.14.1" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.aws:brave-propagation-aws:0.23.4" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter-brave:2.16.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.16.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.23.2" level="project" />
   </component>
 </module>

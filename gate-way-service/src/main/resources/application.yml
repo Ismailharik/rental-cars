@@ -1,19 +1,16 @@
-#spring:
-#  cloud:
-#    gateway:
-#      routes:
-#        - id : customer-service
-#          uri : http://localhost:8083/
-#          predicates :
-#            - Path = /customers-service/**
-#          filters:
-#            - RewritePath=/customers-service/(?<path>.*), /$\{path}
-springdoc:
-  version: '@springdoc.version@'
-  swagger-ui:
-    use-root-path: true
+server:
+  port: 9999
 spring:
+  application:
+    name: gateway-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}
   cloud:
+    consul:
+      discovery:
+        register: true
+      port: ${CONSUL_PORT:8500}
+      host: ${CONSUL_HOST:localhost}
     gateway:
       globalcors:
         corsConfigurations:
@@ -25,3 +22,34 @@ spring:
               - POST
               - PUT
               - DELETE
+              - PATCH
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/}
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true

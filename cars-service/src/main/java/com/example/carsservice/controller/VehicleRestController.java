@@ -85,6 +85,7 @@ public class VehicleRestController {
 
         return this.iVehicleService.findVehiclesWithPaginationAndSorting(offset,pageSize,field);
     }
+
     @PostMapping(value = "/images/{vehicleId}")
     public  void addImageToVehicle(HttpServletRequest request,@PathVariable("vehicleId") Long vehicleId,@RequestBody MultipartFile file) throws Exception {
         log.info("add vehicle");

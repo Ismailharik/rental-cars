@@ -32,7 +32,7 @@ public class VehicleServiceImpl implements IVehicleService {
     @Override
     public List<VehicleDTO> getAllVehicles() {
         log.info("select all categories");
-        List<Vehicle> vehicles = vehiculeRepository.findAll();
+        List<Vehicle> vehicles = vehiculeRepository.findAllByOrderByIdDesc();
         List<VehicleDTO> vehicleDTOS =vehicles.stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
         return vehicleDTOS;
     }

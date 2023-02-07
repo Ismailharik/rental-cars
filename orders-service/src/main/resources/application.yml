@@ -1,0 +1,57 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: orders-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:8888
+  cloud:
+    consul:
+      port: ${CONSUL_PORT:8500}
+      host: ${CONSUL_HOST:localhost}
+    openfeign:
+      client:
+        default-to-properties: 'false'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+    defer-datasource-initialization: 'true'
+    hibernate:
+      ddl-auto: create
+    show-sql: 'true'
+  datasource:
+    password: ${MYSQL_PASSWORD:1234}
+    username: ${MYSQL_USERNAME:root}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:orders_service-db}?createDatabaseIfNotExist=true
+
+  sql:
+    init:
+      mode: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVER}
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+feign:
+  circuitbreaker:
+    enabled: 'true'
