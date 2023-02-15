@@ -5,6 +5,11 @@ spring:
     name: cars-service
   config:
     import: optional:configserver:http://${HOST_NAME:localhost}:8888
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://${KC_HOST:keycloak}:${KC_PORT:8080}/auth/realms/rental_cars
   cloud:
     consul:
       port: ${CONSUL_PORT:8500}
@@ -18,7 +23,7 @@ spring:
         dialect: org.hibernate.dialect.MariaDBDialect
     defer-datasource-initialization: 'true'
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: 'true'
   datasource:
     password: 1234
@@ -28,10 +33,10 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-
   sql:
     init:
       mode: always
+
 management:
   endpoints:
     web:
@@ -45,7 +50,7 @@ management:
       probability: 1.0
   zipkin:
     tracing:
-      endpoint: ${ZIPKIN_SERVER}
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
 
 logging:
   level:

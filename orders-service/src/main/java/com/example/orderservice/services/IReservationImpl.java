@@ -3,7 +3,9 @@ package com.example.orderservice.services;
 import com.example.orderservice.dto.ReservationDTO;
 import com.example.orderservice.entities.Reservation;
 import com.example.orderservice.entities.StockFeedback;
+import com.example.orderservice.exceptions.CustomerNotFoundException;
 import com.example.orderservice.exceptions.ReservationNotFoundException;
+import com.example.orderservice.exceptions.VehicleNotFoundException;
 import com.example.orderservice.mappers.ReservationMapper;
 import com.example.orderservice.model.Customer;
 import com.example.orderservice.model.Vehicle;
@@ -46,8 +48,8 @@ public class IReservationImpl implements IReservation {
     }
 
     @Override
-    public ReservationDTO getReservationById(Long reservationId) throws ReservationNotFoundException {
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+    public ReservationDTO getReservationById(Long reservationId) throws ReservationNotFoundException, CustomerNotFoundException {
+        System.out.println("get reservation by Id");
         Reservation reservation = reservationRepository.findById(reservationId).orElseThrow(()->new ReservationNotFoundException(reservationId));
 
         Customer customer =customerRestClient.getCustomerById(reservation.getCustomerId());
@@ -58,7 +60,7 @@ public class IReservationImpl implements IReservation {
     }
 
     @Override
-    public ReservationDTO reserveVehicle(ReservationDTO reservationDTO){
+    public ReservationDTO reserveVehicle(ReservationDTO reservationDTO)   {
 
         Reservation reservation = reservationMapper.fromReservationDTOToReservation(reservationDTO);
         Customer customer = customerRestClient.saveCustomer(reservationDTO.getCustomer());

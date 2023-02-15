@@ -1,3 +1,4 @@
+com\example\carsservice\config\SecurityConfig.class
 com\example\carsservice\entities\Promo.class
 com\example\carsservice\repositories\CategoryRepository.class
 com\example\carsservice\exceptions\CategoryNotFoundException.class

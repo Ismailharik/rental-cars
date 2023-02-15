@@ -5,13 +5,18 @@ spring:
     name: gateway-service
   config:
     import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://${KC_HOST:localhost}:${KC_PORT:8080}/auth/realms/rental_cars
   cloud:
     consul:
-      discovery:
-        register: true
       port: ${CONSUL_PORT:8500}
       host: ${CONSUL_HOST:localhost}
     gateway:
+#      routes:
+#        default-filters: TokenRelay=
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -37,12 +42,13 @@ management:
       probability: 1.0
   zipkin:
     tracing:
-      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/}
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
 
 logging:
   level:
     org:
       springframework:
+        security: DEBUG
         web:
           servlet:
             DispatcherServlet: DEBUG
@@ -53,3 +59,4 @@ springdoc:
   version: '@springdoc.version@'
   swagger-ui:
     use-root-path: true
+#debug: true

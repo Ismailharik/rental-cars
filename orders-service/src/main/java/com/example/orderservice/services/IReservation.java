@@ -3,6 +3,7 @@ package com.example.orderservice.services;
 import com.example.orderservice.dto.ReservationDTO;
 import com.example.orderservice.exceptions.CustomerNotFoundException;
 import com.example.orderservice.exceptions.ReservationNotFoundException;
+import com.example.orderservice.exceptions.VehicleNotFoundException;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-version: "3"
+version: '3.7'
 services:
 
 
@@ -16,7 +16,10 @@ services:
       MYSQL_DATABASES: orders_service-db,vehicles-service-db
       MYSQL_USER: sa
     volumes:
-      - path_to_data:/config
+
+#      - path_to_data:/config
+# bind mounting mysql databases
+      - /c/data/mariadb:/var/lib/mysql
     ports:
       - "3306:3306"
     restart: unless-stopped
@@ -41,6 +44,11 @@ services:
       - POSTGRES_DB=offices_service_db
     networks:
       - micros
+# in case you wan't to persist data permanently
+#    volumes:
+#      - /c/data/postgres:/var/lib/postgresql/dat
+#    networks:
+#      - micros
   #End Postgres database
   #Start Mongo db
   mongodb:
@@ -50,6 +58,23 @@ services:
       - "27017:27017"
     networks:
       - micros
+
+  #Start keycloak database
+  kc_db:
+    image: postgres:alpine
+    container_name: kc_db
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: my_admin
+      POSTGRES_PASSWORD: my_password
+      POSTGRES_DB: keycloak_db
+    ports:
+      - "5433:5432"
+    volumes:
+      -   /c/data/keycloak/postgres:/var/lib/postgresql/data
+    networks:
+      - micros
+ #End keycloak database
   #End mongodb
   #####################################################################################
         #SERVICES ( offices-service , cars-service , orders-service , customers-service )
@@ -66,6 +91,7 @@ services:
     environment:
       - POSTGRES_HOST=postgres-db
       - POSTGRES_PORT=5432
+      - OFFICES_DB=offices_service_db
       - POSTGRES_PASSWORD=password
       - POSTGRES_USERNAME=postgres
       - HOST_NAME=config-service
@@ -73,11 +99,14 @@ services:
       - CONSUL_PORT=8500
       - SPRING_CONFIG_PORT=8888
       - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
     depends_on:
       - postgres-db
       - consul-server
       - config-service
       - zipkin-server
+      - keycloak
     networks:
       - micros
   #End office services
@@ -93,16 +122,20 @@ services:
       - MYSQL_PORT=3306
       - MYSQL_PASSWORD=1234
       - MYSQL_USERNAME=root
+      - MYSQL_DB=vehicles-service-db
       - HOST_NAME=config-service
       - CONSUL_HOST=consul-server
       - CONSUL_PORT=8500
       - SPRING_CONFIG_PORT=8888
       - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
     depends_on:
       - mysql-db
       - zipkin-server
       - config-service
       - consul-server
+      - keycloak
     networks:
       - micros
   #End Cars database
@@ -117,18 +150,20 @@ services:
       - MYSQL_PORT=3306
       - MYSQL_PASSWORD=1234
       - MYSQL_USERNAME=root
+      - MYSQL_DB=orders_service-db
       - HOST_NAME=config-service
-      - MONGO_HOST=mongodb
-      - MONGO_PORT=27017
       - CONSUL_HOST=consul-server
       - CONSUL_PORT=8500
       - SPRING_CONFIG_PORT=8888
       - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
     depends_on:
       - mysql-db
       - zipkin-server
       - config-service
       - consul-server
+      - keycloak
     networks:
       - micros
   #End orders service
@@ -147,18 +182,41 @@ services:
       - CONSUL_PORT=8500
       - SPRING_CONFIG_PORT=8888
       - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
     links:
       - mongodb
       - consul-server
       - config-service
     depends_on:
       - zipkin-server
+      - keycloak
     networks:
       - micros
   # End customers service
-    #####################################################################################
+
+  #Start Consul config service
+  consul-config-service:
+    image: consul-config-service
+    container_name: consul-config-service
+    environment:
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+    ports:
+      - "8085:8085"
+    depends_on:
+      - consul-server
+      - vault_dev
+    networks:
+      - micros
+
+      #Start Consul config service
+
+
+  #####################################################################################
       #TOOLS :
-        # zipkin-server :traceability ,
+        # zipkin-server : distributed tracing system. It helps gather timing data needed to troubleshoot latency problems
+        #                 in service architectures. Features include both the collection and lookup of this data.
         # consul-server : services registry , automate network configurations, discover services, and enable secure
         # config-service (spring cloud config ) : storing and serving distributed configurations across multiple applications and environments
         # spring-cloud-gateway : provide routing, security, and API management services for microservices architecture.
@@ -213,14 +271,97 @@ services:
       - CONSUL_HOST=consul-server
       - SPRING_CONFIG_PORT=8888
       - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY= TRACE
     depends_on:
       - zipkin-server
       - consul-server
       - config-service
+      - keycloak
     networks:
       - micros
-  #End Gateway Service
+#  End Gateway Service
 
+  vault_dev:
+    image: hashicorp/vault:latest
+    restart: always
+    volumes:
+      - /vault/data
+      - /etc/vault/logs
+    ports:
+      - "8200:8200/tcp"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: 'root'
+      VAULT_DEV_LISTEN_ADDRESS: '0.0.0.0:8200'
+#      VAULT_ADDR: 'http://0:0:0:0:8200'
+    cap_add:
+      - IPC_LOCK
+    container_name: vault_dev
+    entrypoint: "vault server -dev"
+    depends_on:
+      - consul-server
+    networks:
+      - micros
+    #add you secrect from docker compose
+#    command: sh -c "vault operator init -key-shares=1 -key-threshold=1 && vault login root && vault kv put secret/consul-config-service user.username=ismail user.password=123456"
+
+  #Start keycloak config
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:legacy
+#    image: quay.io/keycloak/keycloak:18.0.0
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: kc_db
+      DB_DATABASE: keycloak_db
+      DB_USER: my_admin
+      DB_SCHEMA: public
+      DB_PASSWORD: my_password
+      KEYCLOAK_USER: kc_admin
+      KEYCLOAK_PASSWORD: kc_password
+      command: start-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - /c/tools/keycloak_data:/opt/jboss/keycloak/standalone/data
+#      - ./realms/:/opt/keycloak/data/import
+    depends_on:
+      - kc_db
+    networks:
+      - micros
+  #End keycloak config
+
+
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - micros
+  broker:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: broker
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    networks:
+      - micros
 networks:
   micros:
     driver: bridge

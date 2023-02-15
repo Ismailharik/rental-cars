@@ -25,7 +25,6 @@ public class ReservationController {
         return iReservation.getReservations();
     }
     @GetMapping("/{reservationId}")
-
     public ReservationDTO getReservationById(@PathVariable Long reservationId) throws ReservationNotFoundException, CustomerNotFoundException {
         logger.info("Get reservation by Id");
         return iReservation.getReservationById(reservationId);

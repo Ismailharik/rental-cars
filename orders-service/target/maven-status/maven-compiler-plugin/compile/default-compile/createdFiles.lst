@@ -4,6 +4,7 @@ com\example\orderservice\oepnfeign\VehicleRestClient.class
 com\example\orderservice\web\StockController.class
 com\example\orderservice\services\StockServiceImpl.class
 com\example\orderservice\services\StockService.class
+com\example\orderservice\oepnfeign\config\RestTemplateInterceptor.class
 com\example\orderservice\repositories\StockFeedBackRepository.class
 com\example\orderservice\dto\ProductsSaleDTO.class
 com\example\orderservice\dto\ProductsSaleMlutiDTO.class
@@ -11,11 +12,15 @@ com\example\orderservice\model\Vehicle.class
 com\example\orderservice\entities\Reservation.class
 com\example\orderservice\OrderConfigTestController.class
 com\example\orderservice\entities\StockFeedback.class
+com\example\orderservice\exceptions\VehicleNotFoundException.class
+com\example\orderservice\oepnfeign\config\MyConfig.class
 com\example\orderservice\mappers\ReservationMapper.class
 com\example\orderservice\OrderServiceApplication.class
 com\example\orderservice\repositories\ReservationRepository.class
+com\example\orderservice\config\SecurityConfig.class
 com\example\orderservice\services\IReservation.class
 com\example\orderservice\exceptions\ReservationNotFoundException.class
+com\example\orderservice\oepnfeign\config\FeignClientInterceptor.class
 com\example\orderservice\oepnfeign\FeignFallback.class
 com\example\orderservice\web\ReservationController.class
 com\example\orderservice\exceptions\CustomerNotFoundException.class

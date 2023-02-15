@@ -1,6 +1,7 @@
 package com.example.orderservice.oepnfeign;
 
 import com.example.orderservice.exceptions.CustomerNotFoundException;
+import com.example.orderservice.exceptions.VehicleNotFoundException;
 import com.example.orderservice.model.Customer;
 import com.example.orderservice.model.Vehicle;
 import feign.Logger;
@@ -36,7 +37,7 @@ public class FeignFallback implements CustomerRestClient,VehicleRestClient {
     }
 
     @Override
-    public Vehicle getVehicleById(Long id) {
+    public Vehicle getVehicleById(Long id){
         System.out.println("Customer not found");
         return null;
     }

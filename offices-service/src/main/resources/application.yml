@@ -3,11 +3,18 @@ server:
 spring:
   application:
     name: offices-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://${KC_HOST:keycloak}:${KC_PORT:8080}/auth/realms/rental_cars
   cloud:
     consul:
       port: ${CONSUL_PORT:8500}
       host: ${CONSUL_HOST:localhost}
-#      oracle enterprise is deprecated & removed from docker
+#      oracle enterprise is deprecated & removed from docker, In case you have it locally then you can use this config
 #  datasource:
 #    url: jdbc:oracle:thin:@//localhost:1521/orcl
 #    username: system
@@ -21,7 +28,7 @@ spring:
 #        dialect: org.hibernate.dialect.Oracle12cDialect
 
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/offices_service_db
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${OFFICES_DB:offices_service_db}
     username: ${POSTGRES_USERNAME:postgres}
     password: ${POSTGRES_PASSWORD:password}
   jpa:
@@ -30,8 +37,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  config:
-    import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}
+
 
 management:
   endpoints:
@@ -46,7 +52,7 @@ management:
       probability: 1.0
   zipkin:
     tracing:
-      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/}
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
 
 logging:
   level:

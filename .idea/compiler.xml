@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cars-service" />
         <module name="config-service" />
+        <module name="consul-config-service" />
         <module name="gate-way-service" />
         <module name="customers-service" />
         <module name="offices-service" />
@@ -19,24 +20,28 @@
     <bytecodeTargetLevel>
       <module name="cars-service" target="17" />
       <module name="config-service" target="17" />
+      <module name="consul-config-service" target="17" />
       <module name="customers-service" target="17" />
       <module name="demo" target="17" />
       <module name="gate-way-service" target="17" />
       <module name="offices-service" target="17" />
       <module name="order-service" target="17" />
       <module name="orders-service" target="17" />
+      <module name="rental-cars-resource" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cars-service" options="-parameters" />
       <module name="config-service" options="-parameters" />
+      <module name="consul-config-service" options="-parameters" />
       <module name="customers-service" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="gate-way-service" options="-parameters" />
       <module name="offices-service" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="orders-service" options="-parameters" />
+      <module name="rental-cars-resource" options="-parameters" />
     </option>
   </component>
 </project>

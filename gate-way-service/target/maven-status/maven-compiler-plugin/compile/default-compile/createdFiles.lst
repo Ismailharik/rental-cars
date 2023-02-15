@@ -1,1 +1,3 @@
+com\example\gatewayservice\Controller.class
 com\example\gatewayservice\GateWayServiceApplication.class
+com\example\gatewayservice\security\SecurityConfig.class

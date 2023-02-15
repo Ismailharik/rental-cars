@@ -5,6 +5,22 @@ spring:
     name: orders-service
   config:
     import: optional:configserver:http://${HOST_NAME:localhost}:8888
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://${KC_HOST:keycloak}:${KC_PORT:8080}/auth/realms/rental_cars
+      client:
+        registration:
+          rental-cars-client:
+            provider: keycloak
+            authorization-grant-type: client_credentials
+            scope: openid
+            client-id: rental-cars-client
+            client-secret: 2HIStFS3pFeSaKh4pXl9V17mgnh7cDsk
+        provider:
+          keycloak:
+            issuer-uri:  http://${KC_HOST:keycloak}:${KC_PORT:8080}/auth/realms/rental_cars
   cloud:
     consul:
       port: ${CONSUL_PORT:8500}
@@ -29,6 +45,9 @@ spring:
     init:
       mode: always
 management:
+  health:
+    circuit-breakers:
+      enabled: true
   endpoints:
     web:
       exposure:
@@ -41,7 +60,72 @@ management:
       probability: 1.0
   zipkin:
     tracing:
-      endpoint: ${ZIPKIN_SERVER}
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
+
+#resilience 4j
+resilience4j:
+  circuit breaker:
+    instances:
+      customers-service:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+
+        # to see all different state of circuit breaker(closed , open , half-open)
+        #circuit breaker will make sure that it won't open the circuit breaker right away ,will wait for a number of
+        #requests to fail, if the number of request are failing then he will change state from close to open
+        slidingWindowType: COUNT_BASED
+
+        # 50% of the calls are like failed then rate threshold you're setting it as 50%
+        #after that we will configure how much time we can wait on the open state
+        failureRateThreshold: 50
+
+        # after 9 requests circuit breaker will change from close to open
+        slidingWindowSize: 9
+        #wait 5s before going from open state to half-open state
+        waitDurationInOpenState: 5s
+
+        # permitted number of calls in half open state , if the communication is still failing then
+        #resillience-4j will change status from to open state
+        permittedNumberOfCallsInHalfOpenState: 3
+
+        minimumNumberOfCalls: 5
+
+        # automatically change state from open to half-open
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+      cars-service: # same config for cars-service
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        slidingWindowType: COUNT_BASED
+        failureRateThreshold: 50
+        slidingWindowSize: 9
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+  #this fields for @Retry
+  retry:
+    instances:
+      customers-service:
+        waitDuration: 10s
+        max-attempts: 6
+      cars-service:
+        waitDuration: 10s
+        max-attempts: 10
+  #uncomment this one if I use @RateLimiter, you should also uncomment @RateLimiter
+#  rate-limiter:
+#    instances:
+#      customers-service:
+#        register-health-indicator: false
+#        limit-for-period: 10
+#        limit-refresh-period: 10s
+#        timeout-duration: 3s
+#      cars-service:
+#        register-health-indicator: false
+#        limit-for-period: 10
+#        limit-refresh-period: 10s
+#        timeout-duration: 3s
 
 logging:
   level:
