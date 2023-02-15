@@ -57,8 +57,6 @@
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:6.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:6.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:6.0.2" level="project" />
@@ -228,5 +226,14 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-oauth2-client:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.kafka:spring-kafka:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:6.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:6.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:6.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:3.3.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.luben:zstd-jni:1.5.2-1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.lz4:lz4-java:1.8.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xerial.snappy:snappy-java:1.1.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
   </component>
 </module>

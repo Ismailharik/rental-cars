@@ -1,0 +1,47 @@
+server:
+  port: 0
+spring:
+  application:
+    name: notification-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:8888
+  cloud:
+    consul:
+      port: ${CONSUL_PORT:8500}
+      host: ${CONSUL_HOST:localhost}
+    openfeign:
+      client:
+        default-to-properties: 'false'
+
+
+management:
+  health:
+    circuit-breakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
+  #kafka properties
+#  kafka:
+#    bootstrap-servers:  ${KAFKA_HOST:localhost}:9092
+#    template:
+#      default-topic: notificationTopic
+#    consumer:
+#      group-id: notificationId
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#    properties:
+#      spring:
+#        json:
+#          type:
+#            mapping: event:com.example.notificationservice.OrderPlacedEvent

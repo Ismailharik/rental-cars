@@ -40,10 +40,26 @@ spring:
     password: ${MYSQL_PASSWORD:1234}
     username: ${MYSQL_USERNAME:root}
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:orders_service-db}?createDatabaseIfNotExist=true
-
   sql:
     init:
       mode: always
+  #kafka properties
+  kafka:
+    bootstrap-servers:  ${KAFKA_URL:localhost:9092}
+    template:
+      default-topic: notificationTopic
+      #providing to spring-boot project how to serialize this key & value pair into kafka-broker
+      #we should define some serializers
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #converting java object to json
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            type:
+              mapping: event:com.example.orderservice.event.OrderPlacedEvent
+
 management:
   health:
     circuit-breakers:
@@ -136,6 +152,7 @@ logging:
             DispatcherServlet: DEBUG
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
 feign:
   circuitbreaker:
-    enabled: 'true'
+    enabled: true

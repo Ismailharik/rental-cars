@@ -11,6 +11,8 @@
     <file url="file://$PROJECT_DIR$/customers-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gate-way-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gate-way-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/notification-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/notification-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/offices-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/offices-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orders-service/src/main/java" charset="UTF-8" />

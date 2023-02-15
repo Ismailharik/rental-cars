@@ -158,12 +158,14 @@ services:
       - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
       - KC_HOST=keycloak
       - KC_PORT=8080
+      - KAFKA_URL=broker:29092
     depends_on:
       - mysql-db
       - zipkin-server
       - config-service
       - consul-server
       - keycloak
+      - broker
     networks:
       - micros
   #End orders service
@@ -212,7 +214,26 @@ services:
 
       #Start Consul config service
 
+    #Start notification service
+  notification-service:
+    container_name: notification-service
+    image: notification-service
+    environment:
+      - HOST_NAME=config-service
+      - SPRING_CONFIG_PORT=8888
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KAFKA_URL=broker:29092
+    depends_on:
+      - zipkin-server
+      - consul-server
+      - broker
+      - gateway-service
+    networks:
+      - micros
 
+    #Start notification service
   #####################################################################################
       #TOOLS :
         # zipkin-server : distributed tracing system. It helps gather timing data needed to troubleshoot latency problems

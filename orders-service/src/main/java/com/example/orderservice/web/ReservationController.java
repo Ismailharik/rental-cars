@@ -3,6 +3,7 @@ package com.example.orderservice.web;
 import com.example.orderservice.dto.ReservationDTO;
 import com.example.orderservice.exceptions.CustomerNotFoundException;
 import com.example.orderservice.exceptions.ReservationNotFoundException;
+import com.example.orderservice.exceptions.VehicleNotFoundException;
 import com.example.orderservice.services.IReservation;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -43,7 +44,7 @@ public class ReservationController {
     }
 
     @PostMapping("")
-    public ReservationDTO addReservation(@RequestBody ReservationDTO reservationDTO) throws CustomerNotFoundException {
+    public ReservationDTO addReservation(@RequestBody ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException {
         logger.info("add Reservations");
         return  iReservation.reserveVehicle(reservationDTO);
     }

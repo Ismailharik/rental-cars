@@ -3,6 +3,7 @@ package com.example.orderservice.services;
 import com.example.orderservice.dto.ReservationDTO;
 import com.example.orderservice.entities.Reservation;
 import com.example.orderservice.entities.StockFeedback;
+import com.example.orderservice.event.OrderPlacedEvent;
 import com.example.orderservice.exceptions.CustomerNotFoundException;
 import com.example.orderservice.exceptions.ReservationNotFoundException;
 import com.example.orderservice.exceptions.VehicleNotFoundException;
@@ -19,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.data.domain.Sort;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -33,9 +35,10 @@ public class IReservationImpl implements IReservation {
     ReservationMapper reservationMapper;
     VehicleRestClient vehicleRestClient;
     CustomerRestClient customerRestClient;
-    private final Resilience4JCircuitBreakerFactory circuitBreakerFactory;
+    //private final Resilience4JCircuitBreakerFactory circuitBreakerFactory;
     private static Logger logger = LoggerFactory.getLogger(ReservationController.class);
 
+    private KafkaTemplate<String,OrderPlacedEvent> kafkaTemplate;
 
     @Override
     public List<ReservationDTO> getReservations() {
@@ -52,28 +55,47 @@ public class IReservationImpl implements IReservation {
         System.out.println("get reservation by Id");
         Reservation reservation = reservationRepository.findById(reservationId).orElseThrow(()->new ReservationNotFoundException(reservationId));
 
+        //call external services
         Customer customer =customerRestClient.getCustomerById(reservation.getCustomerId());
         Vehicle vehicle = vehicleRestClient.getVehicleById(reservation.getVehicleId());
+
         reservation.setCustomer(customer);
         reservation.setVehicle(vehicle);
         return reservationMapper.fromReservationToReservationDTO(reservation);
     }
 
     @Override
-    public ReservationDTO reserveVehicle(ReservationDTO reservationDTO)   {
+    public ReservationDTO reserveVehicle(ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException {
 
         Reservation reservation = reservationMapper.fromReservationDTOToReservation(reservationDTO);
+
+        //call external services
         Customer customer = customerRestClient.saveCustomer(reservationDTO.getCustomer());
         Vehicle vehicle = vehicleRestClient.getVehicleById(reservation.getVehicleId());
-        System.out.println(vehicle);
+
+
         reservation.setTotalPrice( reservation.getDuration()* vehicle.getDailyPrice());
         reservation.setVehicle(vehicle);
         reservation.setCustomer(customer);
-        reservationDTO = reservationMapper.fromReservationToReservationDTO(reservationRepository.save(reservation));
 
-        this.orderFeedBack(reservation.getTotalPrice());
+        if (customer==null){
+            throw new CustomerNotFoundException(reservation.getCustomerId());
+        }
+        if(vehicle==null){
+            throw  new VehicleNotFoundException(reservation.getVehicleId());
+        }
+        if(customer!=null){ // I will accept order while cars service isn't responding
 
-        return reservationDTO;
+
+            reservationDTO = reservationMapper.fromReservationToReservationDTO(reservationRepository.save(reservation));
+            this.orderFeedBack(reservation.getTotalPrice());
+
+            //send orderPlaced event as object to the notificationTopic
+            kafkaTemplate.send("notificationTopic",new OrderPlacedEvent(reservationDTO.getId()));
+
+            return reservationDTO;
+        }
+        return null;
     }
     @Override
     public List<ReservationDTO> vehicleReservations(Long vehicleId){
