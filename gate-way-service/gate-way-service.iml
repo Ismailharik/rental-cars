@@ -159,6 +159,12 @@
     <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter-brave:2.16.3" level="project" />
     <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.16.3" level="project" />
     <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.23.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.micrometer:micrometer-registry-prometheus:1.10.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_common:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_tracer_otel:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_tracer_common:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.16.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-oauth2-resource-server:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:6.0.2" level="project" />

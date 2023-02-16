@@ -18,6 +18,8 @@ spring:
       resource-server:
         jwt:
           issuer-uri: http://${KC_HOST:keycloak}:${KC_PORT:8080}/auth/realms/rental_cars
+
+
 management:
   endpoints:
     web:
@@ -31,7 +33,7 @@ management:
       probability: 1.0
   zipkin:
     tracing:
-      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/}
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
 
 logging:
   level:

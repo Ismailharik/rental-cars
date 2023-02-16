@@ -209,5 +209,11 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.micrometer:micrometer-registry-prometheus:1.10.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_common:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_tracer_otel:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_tracer_common:0.16.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.16.0" level="project" />
   </component>
 </module>

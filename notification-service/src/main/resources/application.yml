@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8086
 spring:
   application:
     name: notification-service
@@ -15,9 +15,6 @@ spring:
 
 
 management:
-  health:
-    circuit-breakers:
-      enabled: true
   endpoints:
     web:
       exposure:
@@ -33,15 +30,11 @@ management:
       endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
   #kafka properties
 #  kafka:
-#    bootstrap-servers:  ${KAFKA_HOST:localhost}:9092
 #    template:
 #      default-topic: notificationTopic
 #    consumer:
 #      group-id: notificationId
 #      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 #      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#    properties:
-#      spring:
-#        json:
-#          type:
-#            mapping: event:com.example.notificationservice.OrderPlacedEvent
+#      properties.spring.json.type.mapping: event:com.example.notificationservice.OrderPlacedEvent
+#    bootstrap-servers: ${KAFKA_URL:localhost:9092}

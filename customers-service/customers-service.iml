@@ -155,28 +155,53 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: jakarta.persistence:jakarta.persistence-api:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.micrometer:micrometer-tracing-bridge-brave:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:micrometer-registry-prometheus:1.10.2" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_common:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:micrometer-tracing-bridge-otel:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-tracing:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: io.micrometer:context-propagation:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.4" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave:5.14.1" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-context-slf4j:5.14.1" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-http:5.14.1" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.aws:brave-propagation-aws:0.23.4" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter-brave:2.16.3" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-api:1.19.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-context:1.19.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-extension-aws:1.19.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-semconv:1.19.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-common:1.19.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-trace:1.19.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk:1.19.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-metrics:1.19.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.opentelemetry:opentelemetry-sdk-logs:1.19.0-alpha" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.opentelemetry:opentelemetry-api-logs:1.19.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-semconv:1.19.2-alpha" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry.instrumentation:opentelemetry-instrumentation-api:1.19.2" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-extension-trace-propagators:1.19.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-exporter-zipkin:1.19.0" level="project" />
     <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.16.3" level="project" />
     <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.23.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-resource-server:6.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.opentelemetry:opentelemetry-exporter-common:1.19.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.zipkin.reporter2:zipkin-sender-okhttp3:2.16.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.squareup.okhttp3:okhttp:4.10.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.squareup.okio:okio-jvm:3.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.21" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.21" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.21" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.7.21" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-oauth2-resource-server:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:6.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-resource-server:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-core:6.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-jose:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.nimbusds:nimbus-jose-jwt:9.24.4" level="project" />
     <orderEntry type="library" name="Maven: com.github.stephenc.jcip:jcip-annotations:1.0-1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:6.0.0" level="project" />
   </component>
 </module>
