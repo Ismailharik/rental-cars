@@ -34,9 +34,8 @@ public class CarsServiceApplication {
     }
 
 //       @Bean
-//
-//    CommandLineRunner start(VehicleRepository vehicleRepository,
-//                            CategoryRepository categoryRepository
+//       CommandLineRunner start(VehicleRepository vehicleRepository,
+//                               CategoryRepository categoryRepository
 //                            ) throws ParseException {
 //           SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 //           String date1 = "22-06-2006";

@@ -14,14 +14,13 @@ import com.example.orderservice.oepnfeign.CustomerRestClient;
 import com.example.orderservice.oepnfeign.VehicleRestClient;
 import com.example.orderservice.repositories.ReservationRepository;
 import com.example.orderservice.repositories.StockFeedBackRepository;
-import com.example.orderservice.web.ReservationController;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.data.domain.Sort;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+//import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -30,13 +29,13 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 public class IReservationImpl implements IReservation {
+
     ReservationRepository reservationRepository;
     StockFeedBackRepository stockFeedBackRepository;
     ReservationMapper reservationMapper;
     VehicleRestClient vehicleRestClient;
     CustomerRestClient customerRestClient;
-    //private final Resilience4JCircuitBreakerFactory circuitBreakerFactory;
-    private static Logger logger = LoggerFactory.getLogger(ReservationController.class);
+//    private final WebClient webClient;
 
     private KafkaTemplate<String,OrderPlacedEvent> kafkaTemplate;
 
@@ -51,11 +50,11 @@ public class IReservationImpl implements IReservation {
     }
 
     @Override
-    public ReservationDTO getReservationById(Long reservationId) throws ReservationNotFoundException, CustomerNotFoundException {
-        System.out.println("get reservation by Id");
+    public ReservationDTO getReservationById(Long reservationId) throws ReservationNotFoundException {
         Reservation reservation = reservationRepository.findById(reservationId).orElseThrow(()->new ReservationNotFoundException(reservationId));
 
         //call external services
+
         Customer customer =customerRestClient.getCustomerById(reservation.getCustomerId());
         Vehicle vehicle = vehicleRestClient.getVehicleById(reservation.getVehicleId());
 
@@ -65,7 +64,7 @@ public class IReservationImpl implements IReservation {
     }
 
     @Override
-    public ReservationDTO reserveVehicle(ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException {
+    public ReservationDTO addReserveVehicle(ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException {
 
         Reservation reservation = reservationMapper.fromReservationDTOToReservation(reservationDTO);
 
@@ -135,7 +134,7 @@ public class IReservationImpl implements IReservation {
     }
 
     @Override
-    public List<ReservationDTO> getReservationWithSort(String field){
+    public List<ReservationDTO>  getReservationsWithSort(String field){
         List<Reservation> reservations = reservationRepository.findAll(Sort.by(Sort.Direction.DESC,field));
         return reservations.stream().map(r->reservationMapper.fromReservationToReservationDTO(r)).toList();
     }

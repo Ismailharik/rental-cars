@@ -13,9 +13,9 @@ public class FeignFallback implements CustomerRestClient,VehicleRestClient {
 
     // getCustomerById will be return nnu to customer in case fall back from open feign
     @Override
-    public Customer getCustomerById(Long id)  {
+    public Customer getCustomerById(Long id){
         System.out.println("Customer not found");
-        return null;
+        return new Customer();
 
     }
 

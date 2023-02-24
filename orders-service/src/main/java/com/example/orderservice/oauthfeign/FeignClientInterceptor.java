@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class FeignClientInterceptor implements RequestInterceptor {
 
-
     @Autowired
     private OAuth2AuthorizedClientManager manager;
 
@@ -23,7 +22,5 @@ public class FeignClientInterceptor implements RequestInterceptor {
 
         String token = manager.authorize(OAuth2AuthorizeRequest.withClientRegistrationId("rental-cars-client").principal("openid").build()).getAccessToken().getTokenValue();
         template.header("Authorization", "Bearer " + token);
-
-
     }
 }

@@ -75,10 +75,15 @@ public class VehicleServiceImpl implements IVehicleService {
     }
 
     @Override
-    public void deleteVehicle(Long idVehicle) throws VehicleNotFoundException{
+    public void deleteVehicle(Long idVehicle) throws Exception{
         log.info("Delete Vehicle");
         Vehicle vehicle = vehiculeRepository.findById(idVehicle).orElseThrow(()->new VehicleNotFoundException(idVehicle));
-            vehiculeRepository.delete(vehicle);
+
+        // delete all images for this vehicle that we want to remove
+        for (int i = 0; i <vehicle.getImages().size() ; i++) {
+            this.deleteImageFromVehicle(vehicle.getId(),i);
+        }
+        vehiculeRepository.delete(vehicle);
     }
 
     @Override
@@ -131,10 +136,27 @@ public class VehicleServiceImpl implements IVehicleService {
     }
     @Override
     public void addImageToVehicle(Long id, MultipartFile file,String url) throws Exception {
-        // Images name  = vahicleId + _ + index of this image
+
         Vehicle vehicle = vehiculeRepository.findById(id).orElseThrow(()->new CategoryNotFoundException(id));
 
-//        String imageName = file.getOriginalFilename();
+        /*
+        * images shouldn't be stored by it's names for security reasons
+        * so I will get the vehicleId & the index of it's last image
+        * the image name will be stored by this format  = vehicleId + '_' + [ (index of last image + 1 ) <==> Arr.size()]
+        * so images will be stored like that
+            * vehicle.getImages().get(0) <==> vehicleId_0
+            * vehicle.getImages().get(1) <==> vehicleId_1
+            * vehicle.getImages().get(2) <==> vehicleId_2
+        *
+        * to get this images I have used urls array to store the full url of each image
+            * so vehicle.getUrls().get(vehicleId) <==> http:IP@:port/vehicles/images/vehicleId/IMAGE_INDEX
+            * exp : http://localhost:GATEWAYPORT/vehicles/1/0 ( get first image of vehicle with id 1)
+        * like that you can easily call this image from the front end , exp:
+        *  ngFor url of vehicle.urls
+        *       <img  [src]="url">
+        *
+        */
+
         int index = vehicle.getImages().size();
         String imageName = vehicle.getId() +"_"+ index+".jpg";
         String src = url+"/"+index; //the image url
@@ -144,7 +166,7 @@ public class VehicleServiceImpl implements IVehicleService {
         System.out.println(imageName);
         vehiculeRepository.save(vehicle);
         Files.write(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName), file.getBytes());
-        //vehiculeRepository.save(vehicle);
+        //vehicleRepository.save(vehicle);
     }
 
 

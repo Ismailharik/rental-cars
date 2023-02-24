@@ -36,7 +36,7 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public long totalClient() {
-        return customerRestClient.getTotalClient();
+       return customerRestClient.getTotalClient();
     }
 
     @Override

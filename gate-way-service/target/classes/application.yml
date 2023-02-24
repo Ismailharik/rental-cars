@@ -15,12 +15,12 @@ spring:
       port: ${CONSUL_PORT:8500}
       host: ${CONSUL_HOST:localhost}
     gateway:
-#      routes:
-#        default-filters: TokenRelay=
       globalcors:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
+#              - "http://localhost:2400"
+#              - "http://localhost:2401"
             allowedHeaders: "*"
             allowedMethods:
               - GET
@@ -60,3 +60,10 @@ springdoc:
   swagger-ui:
     use-root-path: true
 #debug: true
+web:
+  cors:
+    allowed-origins: "*"
+    allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+    max-age: 3600
+    allowed-headers: "Requestor-Type"
+    exposed-headers: "X-Get-Header"

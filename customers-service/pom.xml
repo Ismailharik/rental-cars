@@ -97,7 +97,8 @@
 			<artifactId>opentelemetry-exporter-zipkin</artifactId>
 		</dependency>
 
-			<!-- Spring security config-->
+
+		<!-- Spring security config-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>

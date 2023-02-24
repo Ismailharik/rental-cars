@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface IReservation {
     List<ReservationDTO> getReservations();
-    ReservationDTO getReservationById(Long idReservation) throws ReservationNotFoundException, CustomerNotFoundException;
-    ReservationDTO reserveVehicle(ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException;// addReservation
+    ReservationDTO getReservationById(Long idReservation) throws ReservationNotFoundException;
+    ReservationDTO addReserveVehicle(ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException;// addReservation
     void deleteReservation(Long idReservation);
     ReservationDTO updateReservation(ReservationDTO reservationDTO);
-    List<ReservationDTO> getReservationWithSort(String field);
+    List<ReservationDTO> getReservationsWithSort(String field);
     List<ReservationDTO> vehicleReservations(Long vehicleId);
 
 }

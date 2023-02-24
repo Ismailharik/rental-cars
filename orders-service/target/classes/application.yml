@@ -9,7 +9,7 @@ spring:
     oauth2:
       resource-server:
         jwt:
-          issuer-uri: http://${KC_HOST:keycloak}:${KC_PORT:8080}/auth/realms/rental_cars
+          issuer-uri: http://${KC_HOST:localhost}:${KC_PORT:8080}/auth/realms/rental_cars
       client:
         registration:
           rental-cars-client:
@@ -17,10 +17,10 @@ spring:
             authorization-grant-type: client_credentials
             scope: openid
             client-id: rental-cars-client
-            client-secret: 2HIStFS3pFeSaKh4pXl9V17mgnh7cDsk
+            client-secret: Nr4m2n42bpjsikbFUAk1j6QkuITkfHWF
         provider:
           keycloak:
-            issuer-uri:  http://${KC_HOST:keycloak}:${KC_PORT:8080}/auth/realms/rental_cars
+            issuer-uri:  http://${KC_HOST:localhost}:${KC_PORT:8080}/auth/realms/rental_cars
   cloud:
     consul:
       port: ${CONSUL_PORT:8500}

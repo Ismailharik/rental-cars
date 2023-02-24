@@ -11,9 +11,7 @@ import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +22,8 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/vehicles")
+
+
 public class VehicleRestController {
     private static Logger log = LoggerFactory.getLogger(VehicleRestController.class);
 
@@ -37,16 +37,6 @@ public class VehicleRestController {
     @GetMapping("/{vehicleId}")
     public VehicleDTO getVehicle(@PathVariable Long vehicleId) throws VehicleNotFoundException {
         return iVehicleService.getVehicle(vehicleId);
-    }
-    @PostMapping(path = "/{idCategory}")
-    public VehicleDTO addVehicle(@RequestBody VehicleDTO vehicleDTO,@PathVariable Long idCategory) throws CategoryNotFoundException {
-       log.info("add vehicle");
-        return iVehicleService.addVehicle(vehicleDTO,idCategory);
-    }
-
-    @DeleteMapping("/{vehicleId}")
-    public void deleteVehicle(@PathVariable  Long vehicleId) throws VehicleNotFoundException {
-        iVehicleService.deleteVehicle(vehicleId);
     }
 
     @GetMapping("/prices")
@@ -62,11 +52,6 @@ public class VehicleRestController {
     @GetMapping("/sort/{field}")
     public List<VehicleDTO> getVehiclesWithSort(@PathVariable String field){
         return iVehicleService.getVehicleWithSorting(field);
-    }
-    @PutMapping(path="/{vehicleId}")
-    public VehicleDTO updateVehicle(@PathVariable Long vehicleId,@RequestBody  VehicleDTO vehicleDTO) throws VehicleNotFoundException {
-            vehicleDTO.setId(vehicleId);
-            return iVehicleService.updateVehicle(vehicleDTO);
     }
 
     @GetMapping("/pagination/{offset}/{pageSize}")
@@ -86,29 +71,49 @@ public class VehicleRestController {
         return this.iVehicleService.findVehiclesWithPaginationAndSorting(offset,pageSize,field);
     }
 
-    @PostMapping(value = "/images/{vehicleId}")
-    public  void addImageToVehicle(HttpServletRequest request,@PathVariable("vehicleId") Long vehicleId,@RequestBody MultipartFile file) throws Exception {
-        log.info("add vehicle");
 
-        String url = request.getRequestURL().toString();
-        iVehicleService.addImageToVehicle(vehicleId,file,url);
-    }
 
     @GetMapping(path = "/images/{vehicleId}/{index}",produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] getVehicleImage(@PathVariable(name = "vehicleId") Long vehicleId, @PathVariable int index) throws Exception{
         return iVehicleService.getVehicleImage(vehicleId,index);
     }
 
+
+
+
+    @PostMapping(path = "/{idCategory}")
+    public VehicleDTO addVehicle(@RequestBody VehicleDTO vehicleDTO, @PathVariable Long idCategory) throws CategoryNotFoundException {
+        log.info("add vehicle");
+        return iVehicleService.addVehicle(vehicleDTO,idCategory);
+    }
+
+    @DeleteMapping("/{vehicleId}")
+    public void deleteVehicle(@PathVariable  Long vehicleId) throws Exception {
+        iVehicleService.deleteVehicle(vehicleId);
+    }
+    @PutMapping(path="/{vehicleId}")
+    public VehicleDTO updateVehicle(@PathVariable Long vehicleId,@RequestBody  VehicleDTO vehicleDTO) throws VehicleNotFoundException {
+        vehicleDTO.setId(vehicleId);
+        return iVehicleService.updateVehicle(vehicleDTO);
+    }
+    @PostMapping(value = "/images/{vehicleId}")
+    public  void addImageToVehicle(HttpServletRequest request, @PathVariable("vehicleId") Long vehicleId, @RequestBody MultipartFile file) throws Exception {
+        log.info("add vehicle");
+
+        String url = request.getRequestURL().toString();
+        iVehicleService.addImageToVehicle(vehicleId,file,url);
+    }
     /*
-    * this endpoints destined for latest vehicles
-    * they will be used in the home page ( showing the latest images )
-    * they will be registered by vehicle Id
-    * */
+     * this endpoints destined for latest vehicles
+     * they will be used in the home page ( showing the latest images )
+     * they will be registered by vehicle Id
+     * */
     // i think I should delete this image
     @PostMapping(value = "/images/latest/{vehicleId}")
     public  void addLatestVehiclesImages( HttpServletRequest request,@PathVariable("vehicleId") Long vehicleId,MultipartFile file) throws Exception {
         /*
-            I have got the HttpRequest to get the api called for store the full src image
+               Injecting HttpServletRequest to get the full url in intention to
+            I have got the HttpServletRequest to get the api called for store the full src image
             while I know the actual api to make it dynamic , if I change the port or the api
             I won't find any problem
         */
@@ -124,4 +129,5 @@ public class VehicleRestController {
     public void updateImage(@PathVariable Long vehicleId,@PathVariable int imageIndex,MultipartFile file) throws VehicleNotFoundException, Exception{
         iVehicleService.updateImage(vehicleId, imageIndex,file);
     }
+
 }

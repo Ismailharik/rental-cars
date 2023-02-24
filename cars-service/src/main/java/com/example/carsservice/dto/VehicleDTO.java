@@ -5,7 +5,6 @@ import com.example.carsservice.entities.Category;
 import com.example.carsservice.entities.Promo;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Data
