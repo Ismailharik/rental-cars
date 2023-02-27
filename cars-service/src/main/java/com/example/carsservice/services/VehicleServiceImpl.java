@@ -17,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -32,7 +33,7 @@ public class VehicleServiceImpl implements IVehicleService {
     @Override
     public List<VehicleDTO> getAllVehicles() {
         log.info("select all categories");
-        List<Vehicle> vehicles = vehiculeRepository.findAllByOrderByIdDesc();
+        List<Vehicle> vehicles = vehiculeRepository.findAll();
         List<VehicleDTO> vehicleDTOS =vehicles.stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
         return vehicleDTOS;
     }
@@ -66,23 +67,18 @@ public class VehicleServiceImpl implements IVehicleService {
         //IMAGES SHOULD PRESERVE THEIR OLD VALUES BACAUSE THEY WON'T CHANGE HERE (BECAUSE THEY ARE NULL IN vehicleDTO IN THIS CASE)
         // THERE SPECIFIC API FOR CHANGING IMG ...
 
-         vehicle.setUrls(vhl.getUrls());
-         vehicle.setImages(vhl.getImages());
+        vehicle.setUrls(vhl.getUrls());
+        vehicle.setImages(vhl.getImages());
 
 
-         vehicle=vehiculeRepository.save(vehicle);
+        vehicle=vehiculeRepository.save(vehicle);
         return carsMapper.fromVehicleToVehicleDto(vehicle);
     }
 
     @Override
-    public void deleteVehicle(Long idVehicle) throws Exception{
+    public void deleteVehicle(Long idVehicle) throws VehicleNotFoundException{
         log.info("Delete Vehicle");
         Vehicle vehicle = vehiculeRepository.findById(idVehicle).orElseThrow(()->new VehicleNotFoundException(idVehicle));
-
-        // delete all images for this vehicle that we want to remove
-        for (int i = 0; i <vehicle.getImages().size() ; i++) {
-            this.deleteImageFromVehicle(vehicle.getId(),i);
-        }
         vehiculeRepository.delete(vehicle);
     }
 
@@ -98,7 +94,7 @@ public class VehicleServiceImpl implements IVehicleService {
         List<VehicleDTO> vehiclesDto = vehiculeRepository.findAll(
                 PageRequest.of(offset, pageSize)
                         .withSort(Sort.by(field))
-                ).stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
+        ).stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
         return vehiclesDto;
     }
 
@@ -111,7 +107,7 @@ public class VehicleServiceImpl implements IVehicleService {
 
     @Override
     public List<VehicleDTO> getVehiclesByPrice(float minPrice, float maxPrice) throws VehicleNotFoundException {
-            List<Vehicle> vehicles = vehiculeRepository.getVehicleByDailyPriceBetween(minPrice,maxPrice);
+        List<Vehicle> vehicles = vehiculeRepository.getVehicleByDailyPriceBetween(minPrice,maxPrice);
         return vehicles.stream().map(vehicle -> carsMapper.fromVehicleToVehicleDto(vehicle)).toList();
     }
 
@@ -132,31 +128,20 @@ public class VehicleServiceImpl implements IVehicleService {
 
         vehiculeRepository.save(vehicle);
 
-        Files.delete(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName));
+        Files.delete(Paths.get(System.getProperty("user.home")+"/vehicles/"+imageName));
     }
     @Override
-    public void addImageToVehicle(Long id, MultipartFile file,String url) throws Exception {
+    public void addImageToVehicle(Long vehicleId, MultipartFile file) throws Exception {
 
-        Vehicle vehicle = vehiculeRepository.findById(id).orElseThrow(()->new CategoryNotFoundException(id));
 
-        /*
-        * images shouldn't be stored by it's names for security reasons
-        * so I will get the vehicleId & the index of it's last image
-        * the image name will be stored by this format  = vehicleId + '_' + [ (index of last image + 1 ) <==> Arr.size()]
-        * so images will be stored like that
-            * vehicle.getImages().get(0) <==> vehicleId_0
-            * vehicle.getImages().get(1) <==> vehicleId_1
-            * vehicle.getImages().get(2) <==> vehicleId_2
-        *
-        * to get this images I have used urls array to store the full url of each image
-            * so vehicle.getUrls().get(vehicleId) <==> http:IP@:port/vehicles/images/vehicleId/IMAGE_INDEX
-            * exp : http://localhost:GATEWAYPORT/vehicles/1/0 ( get first image of vehicle with id 1)
-        * like that you can easily call this image from the front end , exp:
-        *  ngFor url of vehicle.urls
-        *       <img  [src]="url">
-        *
-        */
+        String url = "http://localhost:9999/vehicles/images/"+vehicleId;
 
+        System.out.println("user.home = "+System.getProperty("user.home"));
+
+        // Images name  = vahicleId + _ + index of this image
+        Vehicle vehicle = vehiculeRepository.findById(vehicleId).orElseThrow(()->new CategoryNotFoundException(vehicleId));
+
+//        String imageName = file.getOriginalFilename();
         int index = vehicle.getImages().size();
         String imageName = vehicle.getId() +"_"+ index+".jpg";
         String src = url+"/"+index; //the image url
@@ -165,8 +150,17 @@ public class VehicleServiceImpl implements IVehicleService {
         vehicle.getUrls().add(src);
         System.out.println(imageName);
         vehiculeRepository.save(vehicle);
-        Files.write(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName), file.getBytes());
-        //vehicleRepository.save(vehicle);
+
+        String imagesLocation = System.getProperty("user.home") +"/vehicles";
+
+        File f = new File(imagesLocation);
+        if(f.exists()){
+            System.out.println("directory already exist");
+        }else{
+            System.out.println("create directory ");
+            f.mkdir();
+        }
+        Files.write(Paths.get(imagesLocation +"/"+imageName), file.getBytes());
     }
 
 
@@ -176,15 +170,18 @@ public class VehicleServiceImpl implements IVehicleService {
                 .orElseThrow(() -> new VehicleNotFoundException(vehicleId));
 
         String img = vehicle.getImages().get(index);
-        return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+img));
+        String imageLocation = System.getProperty("user.home")+"/vehicles/";
+        return Files.readAllBytes(Paths.get(imageLocation+img));
     }
 
     @Override
     public void updateImage(Long vehicleId,int imageIndex,MultipartFile file) throws IOException, VehicleNotFoundException {
         Vehicle vehicle = vehiculeRepository.findById(vehicleId).orElseThrow(()->new VehicleNotFoundException(vehicleId));
         String imageName = vehicle.getImages().get(imageIndex);
-        Files.delete(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName));
-        Files.write(Paths.get(System.getProperty("user.home")+"/rental_app/vehicles/"+imageName), file.getBytes());
+        String imageLocation = System.getProperty("user.home")+"/vehicles/";
+
+        Files.delete(Paths.get(imageLocation+imageName));
+        Files.write(Paths.get(imageLocation+imageName), file.getBytes());
     }
 
 }

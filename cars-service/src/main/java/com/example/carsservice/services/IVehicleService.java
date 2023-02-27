@@ -18,12 +18,12 @@ public interface IVehicleService {
 
     VehicleDTO addVehicle(VehicleDTO vehicleDTO,Long idCategory) throws CategoryNotFoundException;
     VehicleDTO updateVehicle(VehicleDTO vehicleDTO) throws VehicleNotFoundException;
-    void deleteVehicle(Long idVehicle) throws VehicleNotFoundException, Exception;
+    void deleteVehicle(Long idVehicle) throws VehicleNotFoundException;
 
     List<VehicleDTO> findVehiclesWithPagination(int offset,int pageSize);
     List<VehicleDTO> findVehiclesWithPaginationAndSorting(int offset,int pageSize,String field);
 
-    void addImageToVehicle(Long id, MultipartFile multipartFile,String url) throws Exception;
+    void addImageToVehicle(Long id, MultipartFile multipartFile) throws Exception;
 
     byte[] getVehicleImage(Long vehicleId,int index) throws VehicleNotFoundException, IOException;
     List<VehicleDTO> getVehiclesByLocation(int officeId);

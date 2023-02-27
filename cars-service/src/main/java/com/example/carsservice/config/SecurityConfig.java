@@ -22,6 +22,8 @@ public class SecurityConfig {
                         requestMatchers("/actuator/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .csrf().disable()
+                .httpBasic().disable()
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();
     }

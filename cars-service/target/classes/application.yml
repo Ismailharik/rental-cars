@@ -23,7 +23,7 @@ spring:
         dialect: org.hibernate.dialect.MariaDBDialect
     defer-datasource-initialization: 'true'
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: 'true'
   datasource:
     password: 1234
