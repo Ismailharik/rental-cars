@@ -65,7 +65,7 @@ services:
   #Start Mongo db
   mongodb:
     image: mongo:latest
-    container_name: "mongodb"
+    container_name: mongodb
     ports:
       - "27017:27017"
     networks:
@@ -95,159 +95,164 @@ services:
 
 
 #  #Start offices-service declaration
-#  offices-service:
-#    image: offices-service
-#    container_name: offices-service
-#    ports:
-#      - "8084:8084"
-#    environment:
-#      - POSTGRES_HOST=postgres-db
-#      - POSTGRES_PORT=5432
-#      - OFFICES_DB=offices_service_db
-#      - POSTGRES_PASSWORD=password
-#      - POSTGRES_USERNAME=postgres
-#      - HOST_NAME=config-service
-#      - CONSUL_HOST=consul-server
-#      - CONSUL_PORT=8500
-#      - SPRING_CONFIG_PORT=8888
-#      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
-#      - KC_HOST=keycloak
-#      - KC_PORT=8080
-#    depends_on:
-#      - postgres-db
-#      - consul-server
-#      - config-service
-#      - zipkin-server
-#      - keycloak
-#    networks:
-#      - micros
-#  #End office services
-#
-#
-#  #Start Cars service
-#  cars-service:
-#    image: cars-service
-#    ports:
-#      - "8082:8082"
-#    environment:
-#      - MYSQL_HOST=mysql-db
-#      - MYSQL_PORT=3306
-#      - MYSQL_PASSWORD=1234
-#      - MYSQL_USERNAME=root
-#      - MYSQL_DB=vehicles-service-db
-#      - HOST_NAME=config-service
-#      - CONSUL_HOST=consul-server
-#      - CONSUL_PORT=8500
-#      - SPRING_CONFIG_PORT=8888
-#      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
-#      - KC_HOST=keycloak
-#      - KC_PORT=8080
-#    depends_on:
-#      - mysql-db
-#      - zipkin-server
-#      - config-service
-#      - consul-server
-#      - keycloak
-#    networks:
-#      - micros
-#  #End Cars database
-#
-#  # Start orders service
-#  orders-service:
-#    image: orders-service
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - MYSQL_HOST=mysql-db
-#      - MYSQL_PORT=3306
-#      - MYSQL_PASSWORD=1234
-#      - MYSQL_USERNAME=root
-#      - MYSQL_DB=orders_service-db
-#      - HOST_NAME=config-service
-#      - CONSUL_HOST=consul-server
-#      - CONSUL_PORT=8500
-#      - SPRING_CONFIG_PORT=8888
-#      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
-#      - KC_HOST=keycloak
-#      - KC_PORT=8080
-#      - KAFKA_URL=broker:29092
-#    depends_on:
-#      - mysql-db
-#      - zipkin-server
-#      - config-service
-#      - consul-server
-#      - keycloak
-#      - broker
-#    networks:
-#      - micros
-#  #End orders service
-#
-#  #Start Customers Service
-#  customers-service:
-#    image: customers-service:latest
-#    container_name: customers-service
-#    ports:
-#      - "8083:8083"
-#    environment:
-#      - HOST_NAME=config-service
-#      - MONGO_HOST=mongodb
-#      - MONGO_PORT=27017
-#      - CONSUL_HOST=consul-server
-#      - CONSUL_PORT=8500
-#      - SPRING_CONFIG_PORT=8888
-#      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
-#      - KC_HOST=keycloak
-#      - KC_PORT=8080
-#    links:
-#      - mongodb
-#      - consul-server
-#      - config-service
-#    depends_on:
-#      - zipkin-server
-#      - keycloak
-#    networks:
-#      - micros
-#  # End customers service
-#
-#  #Start Consul config service
-#  consul-config-service:
-#    image: consul-config-service
-#    container_name: consul-config-service
-#    environment:
-#      - CONSUL_HOST=consul-server
-#      - CONSUL_PORT=8500
-#    ports:
-#      - "8085:8085"
-#    depends_on:
-#      - consul-server
-#      - vault_dev
-#    networks:
-#      - micros
-#
-#      #End Consul config service
-#
-#  #Start notification service
-#  notification-service:
-#    container_name: notification-service
-#    image: notification-service
-#    ports:
-#      - "8086:8086"
-#    environment:
-#      - HOST_NAME=config-service
-#      - SPRING_CONFIG_PORT=8888
-#      - CONSUL_HOST=consul-server
-#      - CONSUL_PORT=8500
-#      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
-#      - KAFKA_URL=broker:29092
-#    depends_on:
-#      - zipkin-server
-#      - consul-server
-#      - broker
-#      - gateway-service
-#    networks:
-#      - micros
-#  #Start Spring cloud config
+  offices-service:
+    image: offices-service
+    container_name: offices-service
+    ports:
+      - "8084:8084"
+    environment:
+      - POSTGRES_HOST=postgres-db
+      - POSTGRES_PORT=5432
+      - OFFICES_DB=offices_service_db
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USERNAME=postgres
+      - HOST_NAME=config-service
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+    depends_on:
+      - postgres-db
+      - consul-server
+      - config-service
+      - zipkin-server
+      - keycloak
+    networks:
+      - micros
+  #End office services
+
+
+  #Start Cars service
+  cars-service:
+    image: cars-service
+    container_name: cars-service
+    ports:
+      - "8082:8082"
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_PORT=3306
+      - MYSQL_PASSWORD=1234
+      - MYSQL_USERNAME=root
+      - MYSQL_DB=vehicles-service-db
+      - HOST_NAME=config-service
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+    depends_on:
+      - mysql-db
+      - zipkin-server
+      - config-service
+      - consul-server
+      - keycloak
+#    volumes:
+#      - ./cars-volume:/tmp
+    networks:
+      - micros
+  #End Cars database
+
+  # Start orders service
+  orders-service:
+    image: orders-service
+    container_name: orders-service
+    ports:
+      - "8081:8081"
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_PORT=3306
+      - MYSQL_PASSWORD=1234
+      - MYSQL_USERNAME=root
+      - MYSQL_DB=orders_service-db
+      - HOST_NAME=config-service
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+      - KAFKA_URL=broker:29092
+    depends_on:
+      - mysql-db
+      - zipkin-server
+      - config-service
+      - consul-server
+      - keycloak
+      - broker
+    networks:
+      - micros
+  #End orders service
+
+  #Start Customers Service
+  customers-service:
+    image: customers-service:latest
+    container_name: customers-service
+    ports:
+      - "8083:8083"
+    environment:
+      - HOST_NAME=config-service
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+    links:
+      - mongodb
+      - consul-server
+      - config-service
+    depends_on:
+      - zipkin-server
+      - keycloak
+    networks:
+      - micros
+  # End customers service
+
+  #Start Consul config service
+  consul-config-service:
+    image: consul-config-service
+    container_name: consul-config-service
+    environment:
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+    ports:
+      - "8085:8085"
+    depends_on:
+      - consul-server
+      - vault_dev
+    networks:
+      - micros
+
+      #End Consul config service
+
+  #Start notification service
+  notification-service:
+    container_name: notification-service
+    image: notification-service
+    ports:
+      - "8086:8086"
+    environment:
+      - HOST_NAME=config-service
+      - SPRING_CONFIG_PORT=8888
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KAFKA_URL=broker:29092
+    depends_on:
+      - zipkin-server
+      - consul-server
+      - broker
+      - gateway-service
+    networks:
+      - micros
+  #Start Spring cloud config
   config-service:
+    container_name: config-service
     image: config-service
     ports:
       - "8888:8888"
@@ -258,29 +263,29 @@ services:
       - consul-server
     networks:
       - micros
-  #End spring cloud config
-  #Start Gateway Service
-#  gateway-service:
-#    image: gateway-service
-#    container_name: gateway-service
-#    ports:
-#      - "9999:9999"
-#    environment:
-#      - HOST_NAME=config-service
-#      - CONSUL_PORT=8500
-#      - CONSUL_HOST=consul-server
-#      - SPRING_CONFIG_PORT=8888
-#      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
-#      - KC_HOST=keycloak
-#      - KC_PORT=8080
-#      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY= TRACE
-#    depends_on:
-#      - zipkin-server
-#      - consul-server
-#      - config-service
-#      - keycloak
-#    networks:
-#      - micros
+#  End spring cloud config
+#  Start Gateway Service
+  gateway-service:
+    image: gateway-service
+    container_name: gateway-service
+    ports:
+      - "9999:9999"
+    environment:
+      - HOST_NAME=config-service
+      - CONSUL_PORT=8500
+      - CONSUL_HOST=consul-server
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY= TRACE
+    depends_on:
+      - zipkin-server
+      - consul-server
+      - config-service
+      - keycloak
+    networks:
+      - micros
         #  End Gateway Service
     #Start notification service
   #####################################################################################
@@ -353,8 +358,8 @@ services:
       DB_USER: my_admin
       DB_SCHEMA: public
       DB_PASSWORD: my_password
-      KEYCLOAK_USER: kc_admin
-      KEYCLOAK_PASSWORD: kc_password
+#      KEYCLOAK_USER: kc_admin
+#      KEYCLOAK_PASSWORD: kc_password
       command: start-dev
     ports:
       - "8080:8080"
@@ -430,6 +435,19 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=password
     networks:
       - micros
+
+  ################################  Start Front end ##################################
+  rental-cars-fornt:
+    image: rental-cars-fornt
+    container_name:   rental-cars-fornt
+    ports:
+      - "2401:80"
+    networks:
+      - micros
+  #####################################################################################
+
+
+
 networks:
   micros:
     driver: bridge

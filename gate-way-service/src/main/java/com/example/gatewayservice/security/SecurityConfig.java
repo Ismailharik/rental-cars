@@ -15,15 +15,20 @@ public class SecurityConfig {
     SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http){
         http.authorizeExchange(
                 exchanges->exchanges
-//                        .pathMatchers("/actuator/**").permitAll()
-//                        .pathMatchers(HttpMethod.GET,"/vehicles/**").permitAll()
-//                        .pathMatchers(HttpMethod.POST,"/reservations/**").permitAll()
-//                        // user isn't require authentication
-//                        .pathMatchers(HttpMethod.POST,"/customers/**").permitAll()
-
+                        .pathMatchers("/actuator/**").permitAll()
+                        .pathMatchers(HttpMethod.GET,"/vehicles/**").permitAll()
+                        .pathMatchers(HttpMethod.GET,"/categories/**").permitAll()
+                        .pathMatchers(HttpMethod.POST,"/reservations/**").permitAll()
+                        // user isn't require authentication
+                        .pathMatchers(HttpMethod.POST,"/customers/**").permitAll()
+                        .pathMatchers(HttpMethod.GET,"/offices/**").permitAll()
+                        .pathMatchers(HttpMethod.GET,"/categories/**").permitAll()
                         .anyExchange().permitAll()
+
         ).oauth2ResourceServer(ServerHttpSecurity.OAuth2ResourceServerSpec::jwt);
-        http.csrf().disable();
+        http.
+                csrf().disable()
+                .httpBasic().disable();
         return http.build();
     }
 }

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.consulconfig.ConsulConfigApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.168 s - in com.example.consulconfig.ConsulConfigApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.289 s - in com.example.consulconfig.ConsulConfigApplicationTests
