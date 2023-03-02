@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a13466e4-cc55-4baf-8988-a15952acd173" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/src/main/java/com/example/carsservice/CarsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/src/main/java/com/example/carsservice/CarsServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/target/cars-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/target/cars-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/target/cars-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/target/cars-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/target/classes/com/example/carsservice/CarsServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/target/classes/com/example/carsservice/CarsServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/target/surefire-reports/2023-02-07T13-37-28_029-jvmRun1.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/target/surefire-reports/TEST-com.example.carsservice.CarsServiceApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/target/surefire-reports/TEST-com.example.carsservice.CarsServiceApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cars-service/target/surefire-reports/com.example.carsservice.CarsServiceApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../cars-service/target/surefire-reports/com.example.carsservice.CarsServiceApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/consul-config-service-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/consul-config-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2023-02-04T19-51-07_671-jvmRun1.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.consulconfig.ConsulConfigApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.consulconfig.ConsulConfigApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customers-service/customers-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../customers-service/customers-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customers-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../customers-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customers-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../customers-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customers-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../customers-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customers-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../customers-service/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customers-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../customers-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gate-way-service/gate-way-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../gate-way-service/gate-way-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gate-way-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gate-way-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gate-way-service/src/main/java/com/example/gatewayservice/GateWayServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gate-way-service/src/main/java/com/example/gatewayservice/GateWayServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gate-way-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../gate-way-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gate-way-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../gate-way-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gate-way-service/target/classes/com/example/gatewayservice/GateWayServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../gate-way-service/target/classes/com/example/gatewayservice/GateWayServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../offices-service/offices-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../offices-service/offices-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../offices-service/src/main/java/com/example/officeservice/OfficeServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../offices-service/src/main/java/com/example/officeservice/OfficeServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../offices-service/target/offices-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../offices-service/target/offices-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../offices-service/target/offices-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../offices-service/target/offices-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../offices-service/target/surefire-reports/TEST-com.example.officeservice.OfficeServiceApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../offices-service/target/surefire-reports/TEST-com.example.officeservice.OfficeServiceApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../offices-service/target/surefire-reports/com.example.officeservice.OfficeServiceApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../offices-service/target/surefire-reports/com.example.officeservice.OfficeServiceApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../orders-service/order-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../orders-service/order-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../orders-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../orders-service/target/classes/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2LarlNF1pksJEwjT8I1lei4FDYI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/pc/Documents/Mes_Projets/Java-angular/all-rental-cars-services/rental-cars/consul-config-service"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ConsulConfigApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="consul-config-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.consulconfig.ConsulConfigApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a13466e4-cc55-4baf-8988-a15952acd173" name="Changes" comment="" />
+      <created>1676120184313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676120184313</updated>
+      <workItem from="1676120185593" duration="11000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,7 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: offices-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}

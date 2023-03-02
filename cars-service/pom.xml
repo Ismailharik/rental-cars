@@ -42,6 +42,22 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
         <!--	Swagger documentation Dependency (work with spring boot version 3	-->
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -58,34 +74,27 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-brave</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.zipkin.brave/brave -->
         <dependency>
-            <groupId>io.zipkin.brave</groupId>
-            <artifactId>brave</artifactId>
-            <version>5.14.1</version>
+            <groupId>io.zipkin.reporter2</groupId>
+            <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-bom -->
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+
+        <!-- Spring security config-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>com.h2database</groupId>-->
-        <!--            <artifactId>h2</artifactId>-->
-        <!--            <scope>runtime</scope>-->
-        <!--        </dependency>-->
+
+        <!--Adding Grafana, it need actuator wich is already added with zipkin   -->
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-
 
     </dependencies>
     <dependencyManagement>
@@ -114,6 +123,19 @@
                     </excludes>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.google.cloud.tools</groupId>-->
+<!--                <artifactId>jib-maven-plugin</artifactId>-->
+<!--                <version>3.2.1</version>-->
+<!--                <configuration>-->
+<!--                    <from>-->
+<!--                        <image>eclipse-temurin:17.0.4.1_1-jre</image>-->
+<!--                    </from>-->
+<!--                    <to>-->
+<!--                        <image>docker.io/ismailharik/${project.artifactId}</image>-->
+<!--                    </to>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
         </plugins>
     </build>
@@ -127,5 +149,4 @@
             </snapshots>
         </repository>
     </repositories>
-
 </project>

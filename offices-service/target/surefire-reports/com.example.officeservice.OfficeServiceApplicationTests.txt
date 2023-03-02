@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.officeservice.OfficeServiceApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.144 s - in com.example.officeservice.OfficeServiceApplicationTests

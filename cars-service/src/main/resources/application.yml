@@ -1,2 +1,7 @@
-springdoc:
-  version: '@springdoc.version@'
+server:
+  port: 8082
+spring:
+  application:
+    name: cars-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:8888

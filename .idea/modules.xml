@@ -4,11 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cars-service/cars-service.iml" filepath="$PROJECT_DIR$/cars-service/cars-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/config-service/config-service.iml" filepath="$PROJECT_DIR$/config-service/config-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/customer-service/customer-service.iml" filepath="$PROJECT_DIR$/customer-service/customer-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/consul-config-service/demo.iml" filepath="$PROJECT_DIR$/consul-config-service/demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gate-way-service/gate-way-service.iml" filepath="$PROJECT_DIR$/gate-way-service/gate-way-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/office-service/office-service.iml" filepath="$PROJECT_DIR$/office-service/office-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/order-service/order-service.iml" filepath="$PROJECT_DIR$/order-service/order-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consul-config-service/consul-config-service.iml" filepath="$PROJECT_DIR$/consul-config-service/consul-config-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customers-service/customers-service.iml" filepath="$PROJECT_DIR$/customers-service/customers-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gate-way-service/gateway-service.iml" filepath="$PROJECT_DIR$/gate-way-service/gateway-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notification-service/notification-service.iml" filepath="$PROJECT_DIR$/notification-service/notification-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/offices-service/offices-service.iml" filepath="$PROJECT_DIR$/offices-service/offices-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orders-service/order-service.iml" filepath="$PROJECT_DIR$/orders-service/order-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/rental-cars.iml" filepath="$PROJECT_DIR$/.idea/rental-cars.iml" />
     </modules>
   </component>

@@ -1,0 +1,4 @@
+com\example\consulconfig\ConsulConfigRestClient.class
+com\example\consulconfig\MyVaultConfig.class
+com\example\consulconfig\ConsulConfigApplication.class
+com\example\consulconfig\MyConsulConfig.class

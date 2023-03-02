@@ -1,0 +1,7 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: orders-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:8888

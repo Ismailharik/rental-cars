@@ -1,0 +1,457 @@
+version: '3.7'
+services:
+
+
+  #####################################################################################
+              #DATABASES ( Postgres db, Mysql Maria db ,H2 db, Mongodb )
+  #####################################################################################
+
+  #Start running mysql-db for two databases (orders_service-db, vehicles_service-db)
+  mysql-db:
+    image: custom-mysql-mariadb-image
+    container_name: mysql-db
+    environment:
+      MYSQLDB_USER: root
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASES: orders_service-db,vehicles-service-db
+      MYSQL_USER: sa
+    volumes:
+#      - path_to_data:/config
+# bind mounting mysql databases
+      - /c/data/mariadb:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    networks:
+      - micros
+  #Start running mysql-db for two databases (orders_service-db, vehicles_service-db)
+  #Start PHP MY ADMIN
+  phpMyAdmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    container_name: phpMyAdmin
+    environment:
+      - PMA_ARBITRARY=1
+    links:
+      - mysql-db
+    ports:
+      - "7089:80"
+    networks:
+      - micros
+  #Start PHP MY ADMIN
+
+
+  # Start Postgres database
+      #(the POSTGRES_DB env variable declare the database offices_service coz we can't use
+      #  ?createIfNotExist=true like mysql oracle ... like this mysql url example
+      #  url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:orders_service-db}?createDatabaseIfNotExist=true
+  postgres-db:
+    image: postgres:alpine
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_DB=offices_service_db
+    networks:
+      - micros
+# in case you wan't to persist data permanently
+#    volumes:
+#      - /c/data/postgres:/var/lib/postgresql/dat
+#    networks:
+#      - micros
+  #End Postgres database
+  #Start Mongo db
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - micros
+
+  #Start keycloak database
+  kc_db:
+    image: postgres:alpine
+    container_name: kc_db
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+#      POSTGRES_USER: my_admin
+#      POSTGRES_PASSWORD: my_password
+      POSTGRES_DB: keycloak_db
+    ports:
+      - "5433:5432"
+    volumes:
+      -   /c/data/keycloak/postgres:/var/lib/postgresql/data
+    networks:
+      - micros
+ #End keycloak database
+  #End mongodb
+  #####################################################################################
+        #SERVICES ( offices-service , cars-service , orders-service , customers-service )
+        #I have added also oracle db , but it's docker image is deprecated so if you have it locally you should only remove the comments
+  #####################################################################################
+
+
+#  #Start offices-service declaration
+  offices-service:
+    image: offices-service
+    container_name: offices-service
+    ports:
+      - "8084:8084"
+    environment:
+      - POSTGRES_HOST=postgres-db
+      - POSTGRES_PORT=5432
+      - OFFICES_DB=offices_service_db
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USERNAME=postgres
+      - HOST_NAME=config-service
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+    depends_on:
+      - postgres-db
+      - consul-server
+      - config-service
+      - zipkin-server
+      - keycloak
+    networks:
+      - micros
+  #End office services
+
+
+  #Start Cars service
+  cars-service:
+    image: cars-service
+    container_name: cars-service
+    ports:
+      - "8082:8082"
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_PORT=3306
+      - MYSQL_PASSWORD=1234
+      - MYSQL_USERNAME=root
+      - MYSQL_DB=vehicles-service-db
+      - HOST_NAME=config-service
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+    depends_on:
+      - mysql-db
+      - zipkin-server
+      - config-service
+      - consul-server
+      - keycloak
+#    volumes:
+#      - ./cars-volume:/tmp
+    networks:
+      - micros
+  #End Cars database
+
+  # Start orders service
+  orders-service:
+    image: orders-service
+    container_name: orders-service
+    ports:
+      - "8081:8081"
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_PORT=3306
+      - MYSQL_PASSWORD=1234
+      - MYSQL_USERNAME=root
+      - MYSQL_DB=orders_service-db
+      - HOST_NAME=config-service
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+      - KAFKA_URL=broker:29092
+    depends_on:
+      - mysql-db
+      - zipkin-server
+      - config-service
+      - consul-server
+      - keycloak
+      - broker
+    networks:
+      - micros
+  #End orders service
+
+  #Start Customers Service
+  customers-service:
+    image: customers-service:latest
+    container_name: customers-service
+    ports:
+      - "8083:8083"
+    environment:
+      - HOST_NAME=config-service
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+    links:
+      - mongodb
+      - consul-server
+      - config-service
+    depends_on:
+      - zipkin-server
+      - keycloak
+    networks:
+      - micros
+  # End customers service
+
+  #Start Consul config service
+  consul-config-service:
+    image: consul-config-service
+    container_name: consul-config-service
+    environment:
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+    ports:
+      - "8085:8085"
+    depends_on:
+      - consul-server
+      - vault_dev
+    networks:
+      - micros
+
+      #End Consul config service
+
+  #Start notification service
+  notification-service:
+    container_name: notification-service
+    image: notification-service
+    ports:
+      - "8086:8086"
+    environment:
+      - HOST_NAME=config-service
+      - SPRING_CONFIG_PORT=8888
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KAFKA_URL=broker:29092
+    depends_on:
+      - zipkin-server
+      - consul-server
+      - broker
+      - gateway-service
+    networks:
+      - micros
+  #Start Spring cloud config
+  config-service:
+    container_name: config-service
+    image: config-service
+    ports:
+      - "8888:8888"
+    environment:
+      - CONSUL_HOST=consul-server
+      - CONSUL_PORT=8500
+    depends_on:
+      - consul-server
+    networks:
+      - micros
+#  End spring cloud config
+#  Start Gateway Service
+  gateway-service:
+    image: gateway-service
+    container_name: gateway-service
+    ports:
+      - "9999:9999"
+    environment:
+      - HOST_NAME=config-service
+      - CONSUL_PORT=8500
+      - CONSUL_HOST=consul-server
+      - SPRING_CONFIG_PORT=8888
+      - ZIPKIN_SERVER=http://zipkin-server:9411/api/v2/spans
+      - KC_HOST=keycloak
+      - KC_PORT=8080
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY= TRACE
+    depends_on:
+      - zipkin-server
+      - consul-server
+      - config-service
+      - keycloak
+    networks:
+      - micros
+        #  End Gateway Service
+    #Start notification service
+  #####################################################################################
+      #TOOLS :
+        # zipkin-server : distributed tracing system. It helps gather timing data needed to troubleshoot latency problems
+        #                 in service architectures. Features include both the collection and lookup of this data.
+        # consul-server : services registry , automate network configurations, discover services, and enable secure
+        # config-service (spring cloud config ) : storing and serving distributed configurations across multiple applications and environments
+        # spring-cloud-gateway : provide routing, security, and API management services for microservices architecture.
+  #####################################################################################
+  # instrumentation can send trace data to. Scribe is disabled by default.
+  zipkin-server:
+    image: openzipkin/zipkin
+    container_name: zipkin-server
+    environment:
+      - STORAGE_TYPE=mem
+       #Uncomment to enable debug logging
+      - JAVA_OPTS=-Dlogging.level.zipkin=DEBUG -Dlogging.level.zipkin2=DEBUG
+    ports:
+      - "9411:9411"
+    networks:
+      - micros
+  #Start consul server
+  consul-server:
+    image: consul
+    container_name: consul-server
+    restart: always
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    command: "agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0"
+    networks:
+      - micros
+  #End Consul server
+
+  #Start Vault image
+  vault_dev:
+    image: hashicorp/vault:latest
+    restart: always
+    volumes:
+      - /vault/data
+      - /etc/vault/logs
+    ports:
+      - "8200:8200/tcp"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: 'root'
+      VAULT_DEV_LISTEN_ADDRESS: '0.0.0.0:8200'
+#      VAULT_ADDR: 'http://0:0:0:0:8200'
+    cap_add:
+      - IPC_LOCK
+    container_name: vault_dev
+    entrypoint: "vault server -dev"
+    depends_on:
+      - consul-server
+    networks:
+      - micros
+    #add you secrect from docker compose
+#    command: sh -c "vault operator init -key-shares=1 -key-threshold=1 && vault login root && vault kv put secret/consul-config-service user.username=ismail user.password=123456"
+
+  #Start keycloak config
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:legacy
+#    image: quay.io/keycloak/keycloak:18.0.0
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: kc_db
+      DB_DATABASE: keycloak_db
+      DB_USER: my_admin
+      DB_SCHEMA: public
+      DB_PASSWORD: my_password
+#      KEYCLOAK_USER: kc_admin
+#      KEYCLOAK_PASSWORD: kc_password
+      command: start-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - /c/tools/keycloak_data:/opt/jboss/keycloak/standalone/data
+#      - ./realms/:/opt/keycloak/data/import
+    depends_on:
+      - kc_db
+    networks:
+      - micros
+  #End keycloak config
+
+
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - micros
+  broker:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: broker
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    networks:
+      - micros
+
+  ## Prometheus
+  prometheus:
+    image: prom/prometheus:v2.37.1
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+#    depends_on:
+#      - cars-service
+#      - offices-service
+#      - orders-service
+#      - notification-service
+#      - customers-service
+#      - gateway-service
+    networks:
+      - micros
+  grafana:
+    image: grafana/grafana-oss:8.5.2
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    links:
+      - prometheus:prometheus
+    volumes:
+      - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    networks:
+      - micros
+
+  ################################  Start Front end ##################################
+  rental-cars-fornt:
+    image: rental-cars-fornt
+    container_name:   rental-cars-fornt
+    ports:
+      - "2401:80"
+    networks:
+      - micros
+  #####################################################################################
+
+
+
+networks:
+  micros:
+    driver: bridge
+
+volumes:
+  path_to_data:
+  dbvol:

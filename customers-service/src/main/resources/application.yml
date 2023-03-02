@@ -1,0 +1,8 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: customers-service
+  config:
+    import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}
+

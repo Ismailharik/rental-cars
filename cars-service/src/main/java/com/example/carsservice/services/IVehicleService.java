@@ -4,8 +4,6 @@ import com.example.carsservice.dto.VehicleDTO;
 import com.example.carsservice.entities.Vehicle;
 import com.example.carsservice.exceptions.CategoryNotFoundException;
 import com.example.carsservice.exceptions.VehicleNotFoundException;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -25,7 +23,7 @@ public interface IVehicleService {
     List<VehicleDTO> findVehiclesWithPagination(int offset,int pageSize);
     List<VehicleDTO> findVehiclesWithPaginationAndSorting(int offset,int pageSize,String field);
 
-    void addImageToVehicle(Long id, MultipartFile multipartFile,String url) throws Exception;
+    void addImageToVehicle(Long id, MultipartFile multipartFile) throws Exception;
 
     byte[] getVehicleImage(Long vehicleId,int index) throws VehicleNotFoundException, IOException;
     List<VehicleDTO> getVehiclesByLocation(int officeId);

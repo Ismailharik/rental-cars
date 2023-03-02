@@ -1,0 +1,42 @@
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'cars-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      # each service target should contain it's host:port
+      - targets: ['cars-service:8082']
+        labels:
+          application: 'Cars Service Application'
+  - job_name: 'orders_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['orders-service:8081']
+        labels:
+          application: 'Order Service Application'
+  - job_name: 'offices_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['offices-service:8084']
+        labels:
+          application: 'Offices Service Application'
+  - job_name: 'customers_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['customers-service:8083']
+        labels:
+          application: 'Customers Service Application'
+  - job_name: 'notification_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['notification-service:8086']
+        labels:
+          application: 'Notification Service Application'
+  - job_name: 'gateway_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['gateway-service:9999']
+        labels:
+          application: 'Api Gateway Service Application'
