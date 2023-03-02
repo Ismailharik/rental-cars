@@ -1,6 +1,8 @@
 
 # Rental Cars Application Based on Microservices Architecture
 ## 🔗 Links
+
+
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9)
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ismail_harik)
@@ -8,8 +10,8 @@
 
 
 This project is designed to allow users to book and manage their car rentals through a rental car application. The application is built using a microservices architecture and incorporates several tools and technologies of Spring Cloud for the backend and Angular 13 for the frontend. The main objective of this project is to help developers become more familiar with Microservices Architecture and to provide them with easy access to the most important configurations required to build microservices-based applications using Spring Cloud.
+<div style="margin-left: auto; margin-right:auto">![img.png](img.png)</div>
 
-![img.png](img.png)
 
 ## Rental Cars Services:
 - [x] cars-services
@@ -74,7 +76,7 @@ This project is designed to allow users to book and manage their car rentals thr
 * Docker-Compose
 ### related projects : 
 
-<a href="https://github.com/SaiUpadhyayula/spring-boot-microservices-new">SaiUpadhyayula/spring-boot-microservices-new</a>
+<a href="https://github.com/SaiUpadhyayula/spring-boot-microservices-new">SaiUpadhyayula/spring-boot-microservices-new</a> <br>
 <a href="https://github.com/Aliot26/microservices_v3">SaiUpadhyayula/spring-boot-microservices-new</a>
 <a href="https://github.com/in28minutes/spring-microservices">in28minutes/spring-microservices</a>
 
