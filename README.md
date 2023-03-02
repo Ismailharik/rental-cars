@@ -101,7 +101,8 @@ docker build -t offices-service .
 docker build -t orders-service .
 docker build -t config-service .
 docker build -t consul-config-service . 
-
+# then you can run the cmd below to run all application
+docker-compose up
 ```
 
 ### run
@@ -111,16 +112,19 @@ docker build -t consul-config-service .
 <p>Services  Ports : </p>
 
 
-| service               |Ports|
-|-----------------------| ---|
-| orders-service        |8081|
-| cars-service          |8082|
-| customers-service     |8083|
-| offices-service       |8084|
-| consul-config-service |8085|
-| notification-service  |8086|
-| config-service        |8888|
-| gateway-service       |9999|
+| service               | Ports |
+|-----------------------|-------|
+| orders-service        | 8081  |
+| cars-service          | 8082  |
+| customers-service     | 8083  |
+| offices-service       | 8084  |
+| consul-config-service | 8085  |
+| notification-service  | 8086  |
+| config-service        | 8888  |
+| gateway-service       | 9999  |
+| client interface      | 4201  |
+| admin dashboard       | 4200  |
+
 
 <p>Tools  Ports : </p>
 

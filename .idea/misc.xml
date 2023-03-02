@@ -5,7 +5,6 @@
       <list>
         <option value="$PROJECT_DIR$/cars-service/pom.xml" />
         <option value="$PROJECT_DIR$/order-service/pom.xml" />
-        <option value="$PROJECT_DIR$/config-service/pom.xml" />
         <option value="$PROJECT_DIR$/office-service/pom.xml" />
         <option value="$PROJECT_DIR$/gate-way-service/pom.xml" />
         <option value="$PROJECT_DIR$/customer-service/pom.xml" />
@@ -16,6 +15,7 @@
         <option value="$PROJECT_DIR$/consul-config-service/pom.xml" />
         <option value="$PROJECT_DIR$/notification-service/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/config-service/pom.xml" />
       </list>
     </option>
   </component>

@@ -30,6 +30,10 @@ public class OfficeServiceApplication {
 		SpringApplication.run(OfficeServiceApplication.class, args);
 	}
 
+	/*
+	* I used right now RepositoryRestResource as i don't need any special endpoint for , I will personalize them later
+	* */
+
 	@Bean
 	CommandLineRunner start(EmployeeRepository employeeRepository, OfficeRepository officeRepository){
 		return args -> {

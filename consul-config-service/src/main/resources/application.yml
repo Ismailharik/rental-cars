@@ -1,13 +1,13 @@
 
 server:
-  port: '8085'
+  port: 8085
 spring:
   application:
     name: consul-config-service
   cloud:
     vault:
       kv:
-        enabled: 'true'
+        enabled: true
       scheme: http
       token: root
     consul:
