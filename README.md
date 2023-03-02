@@ -88,11 +88,30 @@ Any additional information goes here
 
 - [@octokatherine](https://www.github.com/octokatherine)
 
+## Usage : 
+
+### To build docker images ,make sure to replace to each service directory and  run for each one this commands :
+
+```bash
+docker build -t orders-service .
+docker build -t gateway-service .
+docker build -t customers-service .
+docker build -t notification-service .
+docker build -t offices-service .
+docker build -t orders-service .
+docker build -t config-service .
+docker build -t consul-config-service . 
+
+```
+
+### run
 
 
+### All-Ports
+<p>Services  Ports : </p>
+<div style="display: flex;justify-content: center">
 
 
-## All-Ports
 | service               |Ports|
 |-----------------------| ---|
 | orders-service        |8081|
@@ -103,6 +122,11 @@ Any additional information goes here
 | notification-service  |8086|
 | config-service        |8888|
 | gateway-service       |9999|
+
+<p>Services  Ports : </p>
+
+| service               |Ports|
+|-----------------------| ---|
 | zipkin-server         |9411|
 | vault-server          |8200|
 | keycloak-service      |8080|
@@ -112,5 +136,6 @@ Any additional information goes here
 | kafka                 |9092|
 
 
-oracle db config :
+</div>
+If you have installed oracle db in your machine and want to use it make sure to uncomment it's dependency & config from offices service & comment postgres :
 ![oracleConfig](https://user-images.githubusercontent.com/92827404/215745836-5a37ac13-b2e1-49dd-9948-b49189fed5f2.png)
