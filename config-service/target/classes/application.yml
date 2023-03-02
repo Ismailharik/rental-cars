@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       discovery:
-        enabled: 'true'
+        enabled: true
       server:
         git:
           uri: https://github.com/Ismailharik/rental-cars-config.git
