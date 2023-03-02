@@ -9,6 +9,8 @@
 
 This project is designed to allow users to book and manage their car rentals through a rental car application. The application is built using a microservices architecture and incorporates several tools and technologies of Spring Cloud for the backend and Angular 13 for the frontend. The main objective of this project is to help developers become more familiar with Microservices Architecture and to provide them with easy access to the most important configurations required to build microservices-based applications using Spring Cloud.
 
+![img.png](img.png)
+
 ## Rental Cars Services:
 - [x] cars-services
 - [x] notification-service
