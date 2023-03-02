@@ -72,21 +72,13 @@ This project is designed to allow users to book and manage their car rentals thr
 #### containerization
 * Docker
 * Docker-Compose
-## Acknowledgements
+### related projects : 
 
-- [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
-- [Awesome README](https://github.com/matiassingers/awesome-readme)
-- [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-
-
-## Appendix
-
-Any additional information goes here
+<a href="https://github.com/SaiUpadhyayula/spring-boot-microservices-new">SaiUpadhyayula/spring-boot-microservices-new</a>
+<a href="https://github.com/Aliot26/microservices_v3">SaiUpadhyayula/spring-boot-microservices-new</a>
+<a href="https://github.com/in28minutes/spring-microservices">in28minutes/spring-microservices</a>
 
 
-## Authors
-
-- [@octokatherine](https://www.github.com/octokatherine)
 
 ## Usage : 
 
