@@ -109,7 +109,6 @@ docker build -t consul-config-service .
 
 ### All-Ports
 <p>Services  Ports : </p>
-<div style="display: flex;justify-content: center">
 
 
 | service               |Ports|
@@ -123,7 +122,7 @@ docker build -t consul-config-service .
 | config-service        |8888|
 | gateway-service       |9999|
 
-<p>Services  Ports : </p>
+<p>Tools  Ports : </p>
 
 | service               |Ports|
 |-----------------------| ---|
@@ -136,6 +135,5 @@ docker build -t consul-config-service .
 | kafka                 |9092|
 
 
-</div>
 If you have installed oracle db in your machine and want to use it make sure to uncomment it's dependency & config from offices service & comment postgres :
 ![oracleConfig](https://user-images.githubusercontent.com/92827404/215745836-5a37ac13-b2e1-49dd-9948-b49189fed5f2.png)
