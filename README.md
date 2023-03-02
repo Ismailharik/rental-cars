@@ -109,88 +109,32 @@ docker build -t consul-config-service .
 
 ### All-Ports
 <p>Services  Ports : </p>
-<div style="display: flex;justify-content: center">
 
 
-  <tr>
-    <td>
-      <table>
-        <tr>
-          <th>Service</th>
-          <th>Ports</th>
-        </tr>
-        <tr>
-          <td>orders-service</td>
-          <td>8081</td>
-        </tr>
-        <tr>
-          <td>cars-service</td>
-          <td>8082</td>
-        </tr>
-        <tr>
-          <td>customers-service</td>
-          <td>8083</td>
-        </tr>
-        <tr>
-          <td>offices-service</td>
-          <td>8084</td>
-        </tr>
-        <tr>
-          <td>consul-config-service</td>
-          <td>8085</td>
-        </tr>
-        <tr>
-          <td>notification-service</td>
-          <td>8086</td>
-        </tr>
-        <tr>
-          <td>config-service</td>
-          <td>8888</td>
-        </tr>
-        <tr>
-          <td>gateway-service</td>
-          <td>9999</td>
-        </tr>
-      </table>
-    </td>
-    <td>
-      <table>
-        <tr>
-          <th>Service</th>
-          <th>Ports</th>
-        </tr>
-        <tr>
-          <td>zipkin-server</td>
-          <td>9411</td>
-        </tr>
-        <tr>
-          <td>vault-server</td>
-          <td>8200</td>
-        </tr>
-        <tr>
-          <td>keycloak-service</td>
-          <td>8080</td>
-        </tr>
-        <tr>
-          <td>prometheus</td>
-          <td>9090</td>
-        </tr>
-        <tr>
-          <td>grafana</td>
-          <td>3000</td>
-        </tr>
-        <tr>
-          <td>zookeeper</td>
-          <td>2181</td>
-        </tr>
-        <tr>
-          <td>kafka</td>
-          <td>9092</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+| service               |Ports|
+|-----------------------| ---|
+| orders-service        |8081|
+| cars-service          |8082|
+| customers-service     |8083|
+| offices-service       |8084|
+| consul-config-service |8085|
+| notification-service  |8086|
+| config-service        |8888|
+| gateway-service       |9999|
+
+<p>Tools  Ports : </p>
+
+| service               |Ports|
+|-----------------------| ---|
+| zipkin-server         |9411|
+| vault-server          |8200|
+| keycloak-service      |8080|
+| promethues            |9090|
+| grafana               |3000|
+| zookeeper             |2181|
+| kafka                 |9092|
+
+
    
 If you have installed oracle db in your machine and want to use it make sure to uncomment it's dependency & config from offices service & comment postgres :
 ![oracleConfig](https://user-images.githubusercontent.com/92827404/215745836-5a37ac13-b2e1-49dd-9948-b49189fed5f2.png)
