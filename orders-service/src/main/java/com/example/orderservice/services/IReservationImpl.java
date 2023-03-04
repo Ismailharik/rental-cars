@@ -64,7 +64,7 @@ public class IReservationImpl implements IReservation {
     }
 
     @Override
-    public ReservationDTO addReserveVehicle(ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException {
+    public ReservationDTO addVehicleReservation(ReservationDTO reservationDTO) throws Exception {
 
         Reservation reservation = reservationMapper.fromReservationDTOToReservation(reservationDTO);
 
@@ -87,14 +87,18 @@ public class IReservationImpl implements IReservation {
 
 
             reservationDTO = reservationMapper.fromReservationToReservationDTO(reservationRepository.save(reservation));
+            /*I should update order feed back after admin confirmation but just to be simple I will update
+            * It when user add reservation
+            * */
             this.orderFeedBack(reservation.getTotalPrice());
 
             //send orderPlaced event as object to the notificationTopic
             kafkaTemplate.send("notificationTopic",new OrderPlacedEvent(reservationDTO.getId()));
 
             return reservationDTO;
+        }else {
+            throw new Exception("Please verify user information's ");
         }
-        return null;
     }
     @Override
     public List<ReservationDTO> vehicleReservations(Long vehicleId){
@@ -105,6 +109,13 @@ public class IReservationImpl implements IReservation {
 
 
     public void orderFeedBack( double price) {
+
+        /*
+        * I see last reservation in the database , if it added in the same month with the actual month
+        * I will increase only  total price of this month
+        * Else (it's a new month case , so I will register new record for the new month )
+        *
+        * */
         StockFeedback stockFeedback=this.stockFeedBackRepository.findLastRegistration();
         if(stockFeedback!=null && stockFeedback.getDate().getMonth()== LocalDate.now().getMonth()){
             /*CASE SAME MONTH */

@@ -55,8 +55,8 @@ public class ReservationController {
         return iReservation.getReservationsWithSort(field);
     }
     @PostMapping("")
-    public ReservationDTO addReservation(@RequestBody ReservationDTO reservationDTO) throws CustomerNotFoundException, VehicleNotFoundException {
+    public ReservationDTO addReservation(@RequestBody ReservationDTO reservationDTO) throws Exception {
         logger.info("add Reservations");
-        return  iReservation.addReserveVehicle(reservationDTO);
+        return  iReservation.addVehicleReservation(reservationDTO);
     }
 }

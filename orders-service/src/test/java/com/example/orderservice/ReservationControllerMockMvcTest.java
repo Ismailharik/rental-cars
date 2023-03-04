@@ -45,7 +45,7 @@ public class ReservationControllerMockMvcTest {
     public void addReservation() throws Exception {
         ReservationDTO r1 = new ReservationDTO();
         r1.setId(7L); r1.setVehicleId(3L); r1.setTotalPrice(95113.3f);
-        Mockito.when(iReservation.addReserveVehicle(Mockito.any(ReservationDTO.class))).thenReturn(r1);
+        Mockito.when(iReservation.addVehicleReservation(Mockito.any(ReservationDTO.class))).thenReturn(r1);
 
         mockMvc.perform(
                 post("/reservations")

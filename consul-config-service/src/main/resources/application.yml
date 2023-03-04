@@ -17,7 +17,6 @@ spring:
       host: ${CONSUL_HOST:localhost}
   config:
     import: 'optional:consul:, vault:// '
-
 management:
   endpoints:
     web:
