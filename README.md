@@ -79,6 +79,7 @@ This project is designed to allow users to book and manage their car rentals thr
 
 ### To build docker images ,make sure to replace to each service directory and  run for each one this commands :
 <p>First clone projects  </p>
+
 ```bash
 
 [//]: # (Admin dashboard)
@@ -90,6 +91,7 @@ git clone https://github.com/Ismailharik/rental-cars-front.git
 [//]: # (backend services)
 git clone https://github.com/Ismailharik/rental-cars.git
 ```
+<p> Build Image for your backend service or </p>
 
 ```bash
 docker build -t orders-service .
@@ -103,6 +105,27 @@ docker build -t consul-config-service .
 # then you can run the cmd below to run all application
 docker-compose up
 ```
+<p>To test endpoints from postman </p>
+<ul>
+<li>
+  make sure to add on the request header this authorization : ![img_2.png](img_2.png) 
+  <p>If you want to test backend services with rental-cars-client , make sure to add client secret</p> 
+  <p>You should update also host name of keycloak inside  admin dashboard  to localhost : ![img_4.png](img_4.png)</p> 
+</li>
+<li>If you're running  the services from docker make sure to update hosts file by affecting to adding this instruction ![img_3.png](img_3.png)</li>
+
+
+</ul>
+
+<p>If you want to run backend services from your local machine :</p>
+<ul>
+  <li>Update keycloak host name from admin dashboard to localhost : ![img_1.png](img_1.png) </li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
 
 ### run
 
