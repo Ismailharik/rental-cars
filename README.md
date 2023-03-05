@@ -9,7 +9,11 @@
 
 This project is designed to allow users to book and manage their car rentals through a rental car application. The application is built using a microservices architecture and incorporates several tools and technologies of Spring Cloud for the backend and Angular 13 for the frontend. The main objective of this project is to help developers become more familiar with Microservices Architecture and to provide them with easy access to the most important configurations required to build microservices-based applications using Spring Cloud , I have dockerized all services , with one you can run all application.
 
-![img.png](img.png)
+### Demo : 
+<video width="320" height="240" autoplay muted>
+  <source src="https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ## Rental Cars Services:
 - [x] cars-services
@@ -113,10 +117,6 @@ docker-compose up
   * inside postman ![img_9.png](img_9.png)
   * admin dashboard  to localhost : ![img_4.png](img_4.png)
   * late DNS know keycloak hostname , got to  hosts file : ![img_3.png](img_3.png)
-
-  
-
-### run
 
 
 ### All-Ports
