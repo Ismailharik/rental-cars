@@ -1,5 +1,5 @@
 
-# Rental Cars Application Based on Microservices Architecture
+#  A modern and secure rental cars application based on Microservices Architecture 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9)
@@ -78,6 +78,18 @@ This project is designed to allow users to book and manage their car rentals thr
 ## Usage :
 
 ### To build docker images ,make sure to replace to each service directory and  run for each one this commands :
+<p>First clone projects  </p>
+```bash
+
+[//]: # (Admin dashboard)
+git clone https://github.com/Ismailharik/rental-cars-admin.git
+
+[//]: # (Clients interface )
+git clone https://github.com/Ismailharik/rental-cars-front.git
+
+[//]: # (backend services)
+git clone https://github.com/Ismailharik/rental-cars.git
+```
 
 ```bash
 docker build -t orders-service .
