@@ -28,9 +28,12 @@
 ### Functional Analyses : 
 <p>The objective of this project is to enhance the car rental searching for clients by implementing multiple search filters such as vehicle model, name, category, minimum and maximum price and much more informations about the company . The application allows clients to contact the owner and also enables the owner to manage his vehicles, offices, employees, and orders through an hierarchical architecture. The offices are organized with their respective employees and vehicles, which the admin can manipulate . Additionally, the admin can appoint specific office admins with limited dashboard access to manage the vehicles of their specific offices.</p>
 
-### Technical Analysis : 
+<p>
  The application is built with a microservices architecture and incorporates several tools and technologies of Spring Cloud for the backend and Angular 13 for the frontend. The main objective of this project is to help  to get familiar with  microservices architecture,It covered the most important configurations required to build microservices-based applications using Spring Cloud , I have dockerized all services and organised them on docker compose , so with one click you can run all application .
- below you can find a sec
+ below 
+</p>
+<p> <bold> scroll down to see all tech used</bold> </p>
+
 
 ### Demo  __click on the link below__ :
  
