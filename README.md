@@ -149,14 +149,20 @@ docker build -t consul-config-service .
 # then you can run the cmd below to run all application
 docker-compose up
 ```
-#### To test the endpoints from postman 
+#### To test the endpoints from postman :
+<ul>
+<li>Make sure to add on the request header this authorization like the image below</li>
+<li> If you want to test backend services with rental-cars-client , make sure to add client secret </li>
+<li>If you're running backend & front services without docker use <b> localhost</b>  on <i>Access Token URL input</i>, if you're running them from docker compose , use  <b> keycloak</b>  ( because we have passed keycloak as host name to the backend services from docker compose ) </li>
 
-##### make sure to add on the request header this authorization : ![img_8.png](img_8.png)
-  <span>If you want to test backend services with rental-cars-client , make sure to add client secret </span>
-  * To run them without docker you will need to  update host name of keycloak to localhost :
-  * inside postman ![img_9.png](img_9.png)
-  * admin dashboard  to localhost : ![img_4.png](img_4.png)
-  * late DNS know keycloak hostname , got to  hosts file : ![img_3.png](img_3.png)
+<li>In case you have used docker compose to run all backend service , make sur to update hosys file,by adding 
+adding line indicated on the image below
+</li>
+![img_3.png](img_3.png)
+</ul>
+<div  align="center"  >
+<img width="80%" src="img_3.png">
+</div>
 
 
 ### All-Ports
