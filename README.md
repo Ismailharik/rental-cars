@@ -3,26 +3,26 @@
 
 
 
-<ul style="list-style:none; display:flex; justify-content: space-around">
+<div align="center">
+<img  height="30" width="42"  src="./tools-icons/vault-icon.png">
+<img  height="30" width="42"  src="./tools-icons/grafana-logo.png">
+<img  height="30" width="42"   src="./tools-icons/prometheu-logo.png">
+<img  height="30" width="42" src="./tools-icons/iam-keycloak.png">
+<img  height="30" width="42"  src="./tools-icons/Docker-Logo-2013.png">
+<img  height="30" width="42"   src="./tools-icons/docker-compose-logo.jpg">
+<img  height="30" width="42"   src="./tools-icons/mariadb.png">
+<img  height="30" width="42"   src="./tools-icons/Database-postgres.svg.png">
+<img  height="30" width="42" src="./tools-icons/mongodb.png">
+<img  height="30" width="42"  src="./tools-icons/Oracle-Symbol.png">
+<img  height="30" width="42"   src="./tools-icons/springboot.png">
+<img  height="30" width="42"  src="./tools-icons/springcloud.png">
+<img  height="30" width="42"   src="./tools-icons/Docker-Logo-2013.png">
+<img  height="30" width="42"   src="./tools-icons/vault-icon.png">
+<img  height="30" width="42"  src="./tools-icons/zipkin-logo.png">
 
-  <li><img style="width:30px"  src="./tools-icons/vault-icon.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/grafana-logo.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/prometheu-logo.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/iam-keycloak.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/Docker-Logo-2013.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/docker-compose-logo.jpg"></li>
-  <li><img style="width:30px"  src="./tools-icons/mariadb.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/Database-postgres.svg.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/mongodb.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/Oracle-Symbol.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/springboot.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/springcloud.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/Docker-Logo-2013.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/vault-icon.png"></li>
-  <li><img style="width:30px"  src="./tools-icons/zipkin-logo.png"></li>
-  
+</div>
 
-</ul>
+
 
 <!-- <img src="img.png"> -->
 This project is designed to allow users to book and manage their car rentals through a rental car application. The application is built using a microservices architecture and incorporates several tools and technologies of Spring Cloud for the backend and Angular 13 for the frontend. The main objective of this project is to help developers become more familiar with Microservices Architecture and to provide them with easy access to the most important configurations required to build microservices-based applications using Spring Cloud , I have dockerized all services , with one you can run all application.
