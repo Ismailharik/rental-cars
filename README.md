@@ -39,7 +39,7 @@
 <div align="center" >
 
 <a style href="https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone" >
-<img width="80%" src="rental-cars-arch.png" >
+<img width="95%" src="rental-cars-arch.png" >
 <p>Click here to see full demo</p>
 </a>
 
@@ -50,7 +50,7 @@
 
 ### Class Diagram : 
 <div  align="center"  >
-<img width="80%" src="https://user-images.githubusercontent.com/92827404/223061448-c002efbd-c9f5-4340-bc92-16e61a085e99.png">
+<img width="95%" src="https://user-images.githubusercontent.com/92827404/223061448-c002efbd-c9f5-4340-bc92-16e61a085e99.png">
 </div>
 
 
