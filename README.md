@@ -4,21 +4,21 @@
 
 
 <div align="center">
-<img  height="30" width="42"  src="./tools-icons/vault-icon.png">
-<img  height="30" width="42"  src="./tools-icons/grafana-logo.png">
-<img  height="30" width="42"   src="./tools-icons/prometheu-logo.png">
-<img  height="30" width="42" src="./tools-icons/iam-keycloak.png">
-<img  height="30" width="42"  src="./tools-icons/Docker-Logo-2013.png">
-<img  height="30" width="42"   src="./tools-icons/docker-compose-logo.jpg">
-<img  height="30" width="42"   src="./tools-icons/mariadb.png">
-<img  height="30" width="42"   src="./tools-icons/Database-postgres.svg.png">
-<img  height="30" width="42" src="./tools-icons/mongodb.png">
-<img  height="30" width="42"  src="./tools-icons/Oracle-Symbol.png">
-<img  height="30" width="42"   src="./tools-icons/springboot.png">
-<img  height="30" width="42"  src="./tools-icons/springcloud.png">
-<img  height="30" width="42"   src="./tools-icons/Docker-Logo-2013.png">
-<img  height="30" width="42"   src="./tools-icons/vault-icon.png">
-<img  height="30" width="42"  src="./tools-icons/zipkin-logo.png">
+<img  height="45" width="55"  src="./tools-icons/vault-icon.png">
+<img  height="45" width="55" src="./tools-icons/grafana-logo.png">
+<img height="45" width="55"   src="./tools-icons/prometheu-logo.png">
+<img  height="45" width="55" src="./tools-icons/iam-keycloak.png">
+<img  height="45" width="55"  src="./tools-icons/Docker-Logo-2013.png">
+<img  height="45" width="55" src="./tools-icons/docker-compose-logo.jpg">
+<img height="45" width="55"   src="./tools-icons/mariadb.png">
+<img  height="45" width="55"   src="./tools-icons/Database-postgres.svg.png">
+<img height="45" width="55" src="./tools-icons/mongodb.png">
+<img  height="45" width="55" src="./tools-icons/Oracle-Symbol.png">
+<img  height="45" width="55"   src="./tools-icons/springboot.png">
+<img  height="45" width="55"  src="./tools-icons/springcloud.png">
+<img  height="45" width="55"   src="./tools-icons/Docker-Logo-2013.png">
+<img  height="45" width="55"   src="./tools-icons/vault-icon.png">
+<img  height="45" width="55"  src="./tools-icons/zipkin-logo.png">
 
 </div>
 
@@ -142,7 +142,7 @@ docker-compose up
 
 
 | service               | Ports |
-|-----------------------|-------|
+| --------------------- | ----- |
 | orders-service        | 8081  |
 | cars-service          | 8082  |
 | customers-service     | 8083  |
@@ -157,15 +157,15 @@ docker-compose up
 
 <p>Tools  Ports : </p>
 
-| service               |Ports|
-|-----------------------| ---|
-| zipkin-server         |9411|
-| vault-server          |8200|
-| keycloak-service      |8080|
-| promethues            |9090|
-| grafana               |3000|
-| zookeeper             |2181|
-| kafka                 |9092|
+| service          | Ports |
+| ---------------- | ----- |
+| zipkin-server    | 9411  |
+| vault-server     | 8200  |
+| keycloak-service | 8080  |
+| promethues       | 9090  |
+| grafana          | 3000  |
+| zookeeper        | 2181  |
+| kafka            | 9092  |
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9/)
