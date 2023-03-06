@@ -9,8 +9,7 @@ This project is designed to allow users to book and manage their car rentals thr
 [![microservices demo](img_10.png)](https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone)
 
 ### Class Diagram : 
-[cars-rental-class-diagram.pdf](https://github.com/Ismailharik/rental-cars/files/10896030/cars-rental-class-diagram.pdf)
-
+![image](https://user-images.githubusercontent.com/92827404/223061448-c002efbd-c9f5-4340-bc92-16e61a085e99.png)
 
 ## Rental Cars Services:
 - [x] cars-services
