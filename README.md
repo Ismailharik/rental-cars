@@ -168,8 +168,8 @@ adding line indicated on the image below
 ### All-Ports
 
 
-<div  style="display:flex; justify-content:space-between">
-<div>
+<div  style="display:flex;">
+<div style="margin-left:20px">
 <p>Services  Ports : </p>
 
 | service               | Ports |
@@ -186,7 +186,7 @@ adding line indicated on the image below
 | admin dashboard       | 4200  |
 </div>
 
-<div>
+<div style="margin-left:40px">
 <p>Tools  Ports : </p>
 
 | service          | Ports |
