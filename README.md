@@ -165,11 +165,9 @@ adding line indicated on the image below
 </div>
 
 
-### All-Ports
+### Application Ports :
 
-
-
-<table>
+<table align="center">
   <tr>
     
   <td valign="top">
@@ -204,7 +202,6 @@ adding line indicated on the image below
  </td>
   </tr>
 </table>
-
 
 
 
