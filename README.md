@@ -168,12 +168,15 @@ adding line indicated on the image below
 ### All-Ports
 
 
-<div style="display: flex;">
-<div style="margin-left:20px">
-<p>Services  Ports : </p>
+
+<table>
+  <tr>
+    <td valign="top">
+<p>Backend  Ports : </p>
 
 | service               | Ports |
 | --------------------- | ----- |
+| gateway-service       | 9999  |
 | orders-service        | 8081  |
 | cars-service          | 8082  |
 | customers-service     | 8083  |
@@ -181,12 +184,13 @@ adding line indicated on the image below
 | consul-config-service | 8085  |
 | notification-service  | 8086  |
 | config-service        | 8888  |
-| gateway-service       | 9999  |
 | client interface      | 4201  |
 | admin dashboard       | 4200  |
-</div>
 
-<div style="margin-left:40px">
+</div>
+    </td>
+  <td valign="top">
+
 <p>Tools  Ports : </p>
 
 | service          | Ports |
@@ -198,6 +202,17 @@ adding line indicated on the image below
 | grafana          | 3000  |
 | zookeeper        | 2181  |
 | kafka            | 9092  |
+
+ </td>
+  </tr>
+</table>
+<div style="margin-left:20px">
+<p>Services  Ports : </p>
+
+
+
+<div style="margin-left:40px">
+
 </div>
 
 </div>
