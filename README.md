@@ -5,20 +5,20 @@
 
 <div align="center">
 <img  height="45" width="55"  src="./tools-icons/vault-icon.png">
-<img  height="45" width="55" src="./tools-icons/grafana-logo.png">
-<img height="45" width="55"   src="./tools-icons/prometheu-logo.png">
-<img  height="45" width="55" src="./tools-icons/iam-keycloak.png">
-<img  height="45" width="55"  src="./tools-icons/Docker-Logo-2013.png">
-<img  height="45" width="55" src="./tools-icons/docker-compose-logo.jpg">
-<img height="45" width="55"   src="./tools-icons/mariadb.png">
-<img  height="45" width="55"   src="./tools-icons/Database-postgres.svg.png">
-<img height="45" width="55" src="./tools-icons/mongodb.png">
-<img  height="45" width="55" src="./tools-icons/Oracle-Symbol.png">
-<img  height="45" width="55"   src="./tools-icons/springboot.png">
-<img  height="45" width="55"  src="./tools-icons/springcloud.png">
-<img  height="45" width="55"   src="./tools-icons/Docker-Logo-2013.png">
-<img  height="45" width="55"   src="./tools-icons/vault-icon.png">
-<img  height="45" width="55"  src="./tools-icons/zipkin-logo.png">
+<img  width="80" src="./tools-icons/grafana-logo.png">
+<img  width="80"   src="./tools-icons/prometheu-logo.png">
+<img  width="80"; src="./tools-icons/iam-keycloak.png" >
+<img  width="80"  src="./tools-icons/Docker-Logo-2013.png">
+<img  width="80" src="./tools-icons/docker-compose-logo.jpg">
+<img width="80"   src="./tools-icons/mariadb.png">
+<img width="80"   src="./tools-icons/Database-postgres.svg.png">
+<img  width="80" src="./tools-icons/mongodb.png">
+<img  width="80" src="./tools-icons/Oracle-Symbol.png">
+<img  width="80"   src="./tools-icons/springboot.png">
+<img  width="80"  src="./tools-icons/springcloud.png">
+<img  width="80"   src="./tools-icons/Docker-Logo-2013.png">
+<img  width="80"   src="./tools-icons/vault-icon.png">
+<img  width="80" width="55"  src="./tools-icons/zipkin-logo.png">
 
 </div>
 
