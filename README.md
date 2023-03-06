@@ -171,51 +171,40 @@ adding line indicated on the image below
 
 <table>
   <tr>
-    <td valign="top">
-<p>Backend  Ports : </p>
-
-| service               | Ports |
-| --------------------- | ----- |
-| gateway-service       | 9999  |
-| orders-service        | 8081  |
-| cars-service          | 8082  |
-| customers-service     | 8083  |
-| offices-service       | 8084  |
-| consul-config-service | 8085  |
-| notification-service  | 8086  |
-| config-service        | 8888  |
-| client interface      | 4201  |
-| admin dashboard       | 4200  |
-
-</div>
-    </td>
+    
   <td valign="top">
+    <p>Backend  Ports : </p>
 
-<p>Tools  Ports : </p>
+  | service               | Ports |
+  | --------------------- | ----- |
+  | gateway-service       | 9999  |
+  | orders-service        | 8081  |
+  | cars-service          | 8082  |
+  | customers-service     | 8083  |
+  | offices-service       | 8084  |
+  | consul-config-service | 8085  |
+  | notification-service  | 8086  |
+  | config-service        | 8888  |
+  | client interface      | 4201  |
+  | admin dashboard       | 4200  |
+  </td>
+  <td valign="top">
+    <p>Tools  Ports : </p>
 
-| service          | Ports |
-| ---------------- | ----- |
-| zipkin-server    | 9411  |
-| vault-server     | 8200  |
-| keycloak-service | 8080  |
-| promethues       | 9090  |
-| grafana          | 3000  |
-| zookeeper        | 2181  |
-| kafka            | 9092  |
+  | service          | Ports |
+  | ---------------- | ----- |
+  | zipkin-server    | 9411  |
+  | vault-server     | 8200  |
+  | keycloak-service | 8080  |
+  | promethues       | 9090  |
+  | grafana          | 3000  |
+  | zookeeper        | 2181  |
+  | kafka            | 9092  |
 
  </td>
   </tr>
 </table>
-<div style="margin-left:20px">
-<p>Services  Ports : </p>
 
-
-
-<div style="margin-left:40px">
-
-</div>
-
-</div>
 
 
 
