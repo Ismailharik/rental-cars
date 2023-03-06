@@ -159,9 +159,6 @@ docker-compose up
 adding line indicated on the image below
 </li>
 <li>Please the first time you run services add some images to vehicles , I didn't persist data, ( the first images of all vehicles should be 1920x1080 , because I used first images of all vehicles in the carousel of client home page )</li>
-
-
-![img_3.png](img_3.png)
 </ul>
 <div  align="center"  >
 <img width="80%" src="img_3.png" alt="hosts file">
