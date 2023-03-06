@@ -1,8 +1,18 @@
 
 #  A modern and secure rental cars application based on Microservices Architecture 
 
+<ul style="list-style:none">
+  <li><img  src="./tools-icons/angular-logo.png"></li>
+  <li><img src="./tools-icons/"></li>
+  <li><img src="./tools-icons/"></li>
+  <li><img src="./tools-icons/"></li>
+  <li><img src="./tools-icons/"></li>
+  <li><img src="./tools-icons/"></li>
+  <li><img src="./tools-icons/"></li>
+  <li><img src="./tools-icons/"></li>
+</ul>
 
-
+<!-- <img src="img.png"> -->
 This project is designed to allow users to book and manage their car rentals through a rental car application. The application is built using a microservices architecture and incorporates several tools and technologies of Spring Cloud for the backend and Angular 13 for the frontend. The main objective of this project is to help developers become more familiar with Microservices Architecture and to provide them with easy access to the most important configurations required to build microservices-based applications using Spring Cloud , I have dockerized all services , with one you can run all application.
 
 ### Demo click on image below : 
