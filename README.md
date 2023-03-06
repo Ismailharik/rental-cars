@@ -150,6 +150,7 @@ docker-compose up
 ```
 #### To test the endpoints from postman :
 <ul>
+
 <li>Make sure to add on the request header this authorization like the image below</li>
 <li> If you want to test backend services with rental-cars-client , make sure to add client secret </li>
 <li>If you're running backend & front services without docker use <b> localhost</b>  on <i>Access Token URL input</i>, if you're running them from docker compose , use  <b> keycloak</b>  ( because we have passed keycloak as host name to the backend services from docker compose ) </li>
@@ -157,6 +158,9 @@ docker-compose up
 <li>In case you have used docker compose to run all backend service , make sur to update hosys file,by adding 
 adding line indicated on the image below
 </li>
+<li>Please the first time you run services add some images to vehicles , I didn't persist data, ( the first images of all vehicles should be 1920x1080 , because I used first images of all vehicles in the carousel of client home page )</li>
+
+
 ![img_3.png](img_3.png)
 </ul>
 <div  align="center"  >
