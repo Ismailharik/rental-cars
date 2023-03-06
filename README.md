@@ -35,8 +35,7 @@
 ### Demo  __click on image below__ :
  
 <div align="center">
-<iframe width="420" height="315"
-src="https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone">
+<img width="60%" src="img_10.png">
 </iframe>
 
 <!-- [![microservices demo](img_10.png)](https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone) -->
@@ -45,8 +44,8 @@ src="https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone">
 
 
 ### Class Diagram : 
-<div    >
-<img style="width:60%;margin-left: 30px" src="https://user-images.githubusercontent.com/92827404/223061448-c002efbd-c9f5-4340-bc92-16e61a085e99.png">
+<div  align="center"  >
+<img width="60%" src="https://user-images.githubusercontent.com/92827404/223061448-c002efbd-c9f5-4340-bc92-16e61a085e99.png">
 </div>
 
 
