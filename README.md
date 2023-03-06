@@ -25,7 +25,7 @@
 
 
 <!-- <img src="img.png"> -->
-### Functional Analyses : 
+### Description : 
 <p>The objective of this project is to enhance the car rental searching for clients by implementing multiple search filters such as vehicle model, name, category, minimum and maximum price and much more informations about the company . The application allows clients to contact the owner and also enables the owner to manage his vehicles, offices, employees, and orders through an hierarchical architecture. The offices are organized with their respective employees and vehicles, which the admin can manipulate . Additionally, the admin can appoint specific office admins with limited dashboard access to manage the vehicles of their specific offices.</p>
 
 <p>
@@ -40,7 +40,7 @@
 <div align="center" >
 
 <a style href="https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone" >
-<img width="80%" src="img_10.png" >
+<img width="80%" src="rental-cars-arch.png" >
 <p>Click here to see full demo</p>
 </a>
 
