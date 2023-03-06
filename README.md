@@ -1,8 +1,10 @@
 
 #  A modern and secure rental cars application based on Microservices Architecture 
 
+
+
 <ul style="list-style:none; display:flex; justify-content: space-around">
-  <li><img style="width:30px" src="./tools-icons/angular-logo.png"></li>
+
   <li><img style="width:30px"  src="./tools-icons/vault-icon.png"></li>
   <li><img style="width:30px"  src="./tools-icons/grafana-logo.png"></li>
   <li><img style="width:30px"  src="./tools-icons/prometheu-logo.png"></li>
