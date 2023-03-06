@@ -198,8 +198,8 @@ adding line indicated on the image below
 | grafana          | 3000  |
 | zookeeper        | 2181  |
 | kafka            | 9092  |
-
 </div>
+
 </div>
 
 
