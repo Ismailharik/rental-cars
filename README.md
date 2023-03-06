@@ -1,9 +1,5 @@
 
 #  A modern and secure rental cars application based on Microservices Architecture 
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ismail_harik)
 
 
 
@@ -11,6 +7,8 @@ This project is designed to allow users to book and manage their car rentals thr
 
 ### Demo click on image below : 
 [![microservices demo](img_10.png)](https://www.youtube.com/watch?v=SjwAfaMUZKg&ab_channel=IsmailForeveryone)
+
+###Class Diagram : 
 ## Rental Cars Services:
 - [x] cars-services
 - [x] notification-service
@@ -144,6 +142,11 @@ docker-compose up
 | grafana               |3000|
 | zookeeper             |2181|
 | kafka                 |9092|
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ismail_harik)
 
 
 
