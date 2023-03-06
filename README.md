@@ -6,18 +6,19 @@
 <div align="center">
 <img  height="45" width="55"  src="./tools-icons/vault-icon.png">
 <img  width="80" src="./tools-icons/grafana-logo.png">
-<img  width="80"   src="./tools-icons/prometheu-logo.png">
-<img  width="80"; src="./tools-icons/iam-keycloak.png" >
-<img  width="80"  src="./tools-icons/Docker-Logo-2013.png">
+<img  width="80" src="./tools-icons/prometheu-logo.png">
+<img  width="80" src="./tools-icons/iam-keycloak.png" >
+<img  width="80" src="./tools-icons/Docker-Logo-2013.png">
 <img  width="80" src="./tools-icons/docker-compose-logo.jpg">
-<img width="80"   src="./tools-icons/mariadb.png">
-<img width="50"   src="./tools-icons/Database-postgres.svg.png">
+<img  width="80" src="./tools-icons/mariadb.png">
+<img  width="50" src="./tools-icons/Database-postgres.svg.png">
 <img  width="55" src="./tools-icons/mongodb.png">
 <img  width="80" src="./tools-icons/Oracle-Symbol.png">
-<img  width="55" width="55"  src="./tools-icons/zipkin-logo.png">
-<img  width="55"  src="./tools-icons/springcloud.png">
-<img  width="80"   src="./tools-icons/Docker-Logo-2013.png">
-<img  width="100"   src="./tools-icons/springboot.png">
+<img  width="55" src="./tools-icons/zipkin-logo.png">
+<img  width="55" src="./tools-icons/springcloud.png">
+<img  width="80" src="./tools-icons/kafka.png">
+<img  width="80" src="./tools-icons/angular-logo.png">
+<img  width="100"src="./tools-icons/springboot.png">
 
 </div>
 
