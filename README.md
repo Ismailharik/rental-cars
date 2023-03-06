@@ -161,13 +161,16 @@ adding line indicated on the image below
 ![img_3.png](img_3.png)
 </ul>
 <div  align="center"  >
-<img width="80%" src="img_3.png">
+<img width="80%" src="img_3.png" alt="hosts file">
 </div>
 
 
 ### All-Ports
-<p>Services  Ports : </p>
 
+
+<div  style="display:flex; justify-content:space-between">
+<div>
+<p>Services  Ports : </p>
 
 | service               | Ports |
 | --------------------- | ----- |
@@ -181,8 +184,9 @@ adding line indicated on the image below
 | gateway-service       | 9999  |
 | client interface      | 4201  |
 | admin dashboard       | 4200  |
+</div>
 
-
+<div>
 <p>Tools  Ports : </p>
 
 | service          | Ports |
@@ -194,6 +198,11 @@ adding line indicated on the image below
 | grafana          | 3000  |
 | zookeeper        | 2181  |
 | kafka            | 9092  |
+
+</div>
+</div>
+
+
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9/)
