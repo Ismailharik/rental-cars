@@ -168,7 +168,7 @@ adding line indicated on the image below
 ### All-Ports
 
 
-<div  style="display:flex;">
+<div style="display: flex;">
 <div style="margin-left:20px">
 <p>Services  Ports : </p>
 
