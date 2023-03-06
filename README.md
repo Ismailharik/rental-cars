@@ -1,15 +1,25 @@
 
 #  A modern and secure rental cars application based on Microservices Architecture 
 
-<ul style="list-style:none">
-  <li><img  src="./tools-icons/angular-logo.png"></li>
-  <li><img src="./tools-icons/"></li>
-  <li><img src="./tools-icons/"></li>
-  <li><img src="./tools-icons/"></li>
-  <li><img src="./tools-icons/"></li>
-  <li><img src="./tools-icons/"></li>
-  <li><img src="./tools-icons/"></li>
-  <li><img src="./tools-icons/"></li>
+<ul style="list-style:none; display:flex; justify-content: space-around">
+  <li><img style="width:30px" src="./tools-icons/angular-logo.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/vault-icon.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/grafana-logo.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/prometheu-logo.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/iam-keycloak.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/Docker-Logo-2013.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/docker-compose-logo.jpg"></li>
+  <li><img style="width:30px"  src="./tools-icons/mariadb.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/Database-postgres.svg.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/mongodb.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/Oracle-Symbol.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/springboot.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/springcloud.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/Docker-Logo-2013.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/vault-icon.png"></li>
+  <li><img style="width:30px"  src="./tools-icons/zipkin-logo.png"></li>
+  
+
 </ul>
 
 <!-- <img src="img.png"> -->
