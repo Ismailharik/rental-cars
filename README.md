@@ -151,6 +151,8 @@ docker build -t offices-service .
 docker build -t orders-service .
 docker build -t config-service .
 docker build -t consul-config-service . 
+# go to myservices_db folder and run : 
+docker build -t mysql-db .
 # then you can run the cmd below to run all application
 docker-compose up
 ```

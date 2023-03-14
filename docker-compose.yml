@@ -372,8 +372,8 @@ services:
       DB_USER: my_admin
       DB_SCHEMA: public
       DB_PASSWORD: my_password
-#      KEYCLOAK_USER: kc_admin
-#      KEYCLOAK_PASSWORD: kc_password
+      KEYCLOAK_USER: kc_admin
+      KEYCLOAK_PASSWORD: kc_password
       command: start-dev
     ports:
       - "8080:8080"
