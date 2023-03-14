@@ -152,7 +152,7 @@ docker build -t orders-service .
 docker build -t config-service .
 docker build -t consul-config-service . 
 # go to myservices_db folder and run : 
-docker build -t mysql-db .
+docker build -t custom-mariadb .
 # then you can run the cmd below to run all application
 docker-compose up
 ```

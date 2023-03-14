@@ -10,7 +10,7 @@ services:
 
   #Start running mysql-db for two databases (orders_service-db, vehicles_service-db)
   mysql-db:
-    image: custom-mysql-mariadb-image
+    image: custom-mariadb
     container_name: mysql-db
     environment:
       MYSQLDB_USER: root
