@@ -136,7 +136,7 @@ git clone https://github.com/Ismailharik/rental-cars-front.git
 git clone https://github.com/Ismailharik/rental-cars.git
 
 [//]: # (backend services configs)
-https://github.com/Ismailharik/rental-cars-config
+https://github.com/Ismailharik/rental-cars-config.git
 ```
 <p> uncomment those two line of keycloak </p>
 <div align="center" >
