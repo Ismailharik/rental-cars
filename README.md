@@ -224,13 +224,14 @@ If you have installed oracle db in your machine and want to use it make sure to 
 
 
 
-### related projects :
+### Related Projects :
 
 <a href="https://github.com/SaiUpadhyayula/spring-boot-microservices-new">SaiUpadhyayula/spring-boot-microservices-new</a> <br>
 <a href="https://github.com/Aliot26/microservices_v3">Aliot26/microservices_v3</a> <br>
 <a href="https://github.com/in28minutes/spring-microservices">in28minutes/spring-microservices</a>
 
-
+### License
+[LICENSE](LICENSE)
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.linkedin.com/in/ismail-harik-241b371b9/)
