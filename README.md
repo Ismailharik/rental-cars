@@ -76,6 +76,7 @@
 ####  Inter Service Communication :
 *  openfeign (sync Communication)
 *  web clients (sync / async Communication)
+*  kafka Temlate async Communication
 
 #### Resilient Communication :
 * Circuit Breaker
