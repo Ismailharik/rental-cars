@@ -1,4 +1,3 @@
-com\example\carsservice\config\SecurityConfig.class
 com\example\carsservice\entities\Promo.class
 com\example\carsservice\repositories\CategoryRepository.class
 com\example\carsservice\exceptions\CategoryNotFoundException.class
@@ -15,4 +14,3 @@ com\example\carsservice\controller\VehicleRestController.class
 com\example\carsservice\entities\Category.class
 com\example\carsservice\mappers\CarsMapper.class
 com\example\carsservice\repositories\VehicleRepository.class
-com\example\carsservice\CarsServiceApplication$RestConfiguration.class

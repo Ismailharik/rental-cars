@@ -1,7 +1,9 @@
 server:
   port: 8082
+
 spring:
   application:
     name: cars-service
   config:
-    import: optional:configserver:http://${HOST_NAME:localhost}:8888
+    import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}
+

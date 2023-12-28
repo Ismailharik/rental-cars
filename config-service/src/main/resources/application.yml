@@ -9,7 +9,7 @@ spring:
         enabled: true
       server:
         git:
-          uri: https://github.com/Ismailharik/rental-cars-config.git
+          uri: https://github.com/Ismailharik/cars-config
     consul:
       port: ${CONSUL_PORT:8500}
       host: ${CONSUL_HOST:localhost}

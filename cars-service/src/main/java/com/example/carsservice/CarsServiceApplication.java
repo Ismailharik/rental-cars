@@ -80,13 +80,7 @@ public class CarsServiceApplication {
                vehicleRepository.saveAll(vehicles);
            };
        }
-    @Configuration
-    public class RestConfiguration implements RepositoryRestConfigurer {
-        @Override
-        public void configureRepositoryRestConfiguration(
-                RepositoryRestConfiguration config, CorsRegistry cors) {
-            config.exposeIdsFor(Category.class);
-        }
-    }
+
+
 
 }

@@ -37,6 +37,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:5.0.1" level="project" />
@@ -199,16 +200,6 @@
     <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter-brave:2.16.3" level="project" />
     <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.16.3" level="project" />
     <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.23.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-resource-server:6.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:6.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-core:6.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:6.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-jose:6.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.nimbusds:nimbus-jose-jwt:9.24.4" level="project" />
-    <orderEntry type="library" name="Maven: com.github.stephenc.jcip:jcip-annotations:1.0-1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.micrometer:micrometer-registry-prometheus:1.10.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient_common:0.16.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.prometheus:simpleclient:0.16.0" level="project" />

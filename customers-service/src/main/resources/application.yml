@@ -1,0 +1,49 @@
+server:
+ port: 8083
+
+spring:
+ config:
+  import: optional:configserver:http://${HOST_NAME:localhost}:${SPRING_CONFIG_PORT:8888}
+ application:
+  name: customers-service
+ cloud:
+  consul:
+   port: ${CONSUL_PORT:8500}
+   host: ${CONSUL_HOST:localhost}
+ data:
+  mongodb:
+   port: ${MONGO_PORT:27017}
+   host: ${MONGO_HOST:localhost}
+   database: customers-service
+   repositories:
+    enabled: 'true'
+
+
+management:
+ endpoints:
+  web:
+   exposure:
+    include: "*"
+ endpoint:
+  health:
+   show-details: always
+ tracing:
+  sampling:
+   probability: 1.0
+ zipkin:
+  tracing:
+   endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
+
+logging:
+ level:
+  org:
+   springframework:
+    web:
+     servlet:
+      DispatcherServlet: DEBUG
+ pattern:
+  level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+
+springdoc:
+ version: '@springdoc.version@'

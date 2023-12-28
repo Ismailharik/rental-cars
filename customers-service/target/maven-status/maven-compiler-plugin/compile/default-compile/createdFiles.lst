@@ -1,4 +1,3 @@
-com\example\customerservice\config\SecurityConfig.class
 com\example\customerservice\CustomerServiceApplication.class
 com\example\customerservice\entities\Customer.class
 com\example\customerservice\repository\CustomerRepository.class

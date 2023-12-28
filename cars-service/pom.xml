@@ -79,15 +79,6 @@
             <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
 
-        <!-- Spring security config-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
 
         <!--Adding Grafana, it need actuator wich is already added with zipkin   -->
         <dependency>
@@ -127,19 +118,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>com.google.cloud.tools</groupId>-->
-<!--                <artifactId>jib-maven-plugin</artifactId>-->
-<!--                <version>3.2.1</version>-->
-<!--                <configuration>-->
-<!--                    <from>-->
-<!--                        <image>eclipse-temurin:17.0.4.1_1-jre</image>-->
-<!--                    </from>-->
-<!--                    <to>-->
-<!--                        <image>docker.io/ismailharik/${project.artifactId}</image>-->
-<!--                    </to>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+
 
         </plugins>
     </build>

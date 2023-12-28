@@ -18,12 +18,15 @@ import lombok.AllArgsConstructor;
 
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.data.domain.Sort;
+//import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 //import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 
 @AllArgsConstructor
@@ -93,8 +96,7 @@ public class IReservationImpl implements IReservation {
             this.orderFeedBack(reservation.getTotalPrice());
 
             //send orderPlaced event as object to the notificationTopic
-            kafkaTemplate.send("notificationTopic",new OrderPlacedEvent(reservationDTO.getId()));
-
+             kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(reservationDTO.getId()));
             return reservationDTO;
         }else {
             throw new Exception("Please verify user information's ");
